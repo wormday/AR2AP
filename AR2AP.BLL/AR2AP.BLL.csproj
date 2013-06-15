@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgencyEntity.cs">
+      <DependentUpon>AR2AP.tt</DependentUpon>
+    </Compile>
     <Compile Include="AR2AP.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -61,8 +64,34 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AR2AP.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AREntity.cs">
+      <DependentUpon>AR2AP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARRelatedEmpEntity.cs">
+      <DependentUpon>AR2AP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientEntity.cs">
+      <DependentUpon>AR2AP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientTypeEnum.cs">
+      <DependentUpon>AR2AP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CollectionEntity.cs">
+      <DependentUpon>AR2AP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmpEntity.cs">
+      <DependentUpon>AR2AP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceTypeEnum.cs">
+      <DependentUpon>AR2AP.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TermEntity.cs">
+      <DependentUpon>AR2AP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WriteOffEntity.cs">
+      <DependentUpon>AR2AP.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="AR2AP.edmx">
@@ -89,6 +118,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AR2AP.edmx.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

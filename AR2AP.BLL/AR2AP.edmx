@@ -4,27 +4,657 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="AR2AP.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
-        <EntityContainer Name="AR2APTargetContainer" >
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="AR2AP.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="AR2APStoreContainer">
+    <EntitySet Name="AgencyEntities" EntityType="AR2AP.Store.AgencyEntities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClientEntities" EntityType="AR2AP.Store.ClientEntities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AREntities" EntityType="AR2AP.Store.AREntities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TermEntities" EntityType="AR2AP.Store.TermEntities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmpEntities" EntityType="AR2AP.Store.EmpEntities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ARRelatedEmpEntities" EntityType="AR2AP.Store.ARRelatedEmpEntities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CollectionEntities" EntityType="AR2AP.Store.CollectionEntities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WriteOffEntities" EntityType="AR2AP.Store.WriteOffEntities" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="AREntityClientEntity" Association="AR2AP.Store.AREntityClientEntity">
+      <End Role="AREntity" EntitySet="AREntities" />
+      <End Role="ClientEntity" EntitySet="ClientEntities" />
+    </AssociationSet>
+    <AssociationSet Name="AgencyEntityAREntity" Association="AR2AP.Store.AgencyEntityAREntity">
+      <End Role="AREntity" EntitySet="AREntities" />
+      <End Role="AgencyEntity" EntitySet="AgencyEntities" />
+    </AssociationSet>
+    <AssociationSet Name="AREntityTermEntity" Association="AR2AP.Store.AREntityTermEntity">
+      <End Role="AREntity" EntitySet="AREntities" />
+      <End Role="TermEntity" EntitySet="TermEntities" />
+    </AssociationSet>
+    <AssociationSet Name="ARRelatedEmpEntityAREntity" Association="AR2AP.Store.ARRelatedEmpEntityAREntity">
+      <End Role="ARRelatedEmpEntity" EntitySet="ARRelatedEmpEntities" />
+      <End Role="AREntity" EntitySet="AREntities" />
+    </AssociationSet>
+    <AssociationSet Name="ARRelatedEmpEntityEmpEntity" Association="AR2AP.Store.ARRelatedEmpEntityEmpEntity">
+      <End Role="ARRelatedEmpEntity" EntitySet="ARRelatedEmpEntities" />
+      <End Role="EmpEntity" EntitySet="EmpEntities" />
+    </AssociationSet>
+    <AssociationSet Name="CollectionClientEntity" Association="AR2AP.Store.CollectionClientEntity">
+      <End Role="Collection" EntitySet="CollectionEntities" />
+      <End Role="ClientEntity" EntitySet="ClientEntities" />
+    </AssociationSet>
+    <AssociationSet Name="CollectionEntityAgencyEntity" Association="AR2AP.Store.CollectionEntityAgencyEntity">
+      <End Role="CollectionEntity" EntitySet="CollectionEntities" />
+      <End Role="AgencyEntity" EntitySet="AgencyEntities" />
+    </AssociationSet>
+    <AssociationSet Name="WriteOffEntityAREntity" Association="AR2AP.Store.WriteOffEntityAREntity">
+      <End Role="WriteOffEntity" EntitySet="WriteOffEntities" />
+      <End Role="AREntity" EntitySet="AREntities" />
+    </AssociationSet>
+    <AssociationSet Name="WriteOffEntityCollectionEntity" Association="AR2AP.Store.WriteOffEntityCollectionEntity">
+      <End Role="WriteOffEntity" EntitySet="WriteOffEntities" />
+      <End Role="CollectionEntity" EntitySet="CollectionEntities" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AgencyEntities">
+    <Key>
+      <PropertyRef Name="AgencyID" />
+    </Key>
+    <Property Name="AgencyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Currency" Type="nvarchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="ClientEntities">
+    <Key>
+      <PropertyRef Name="ClientID" />
+    </Key>
+    <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientType" Type="tinyint" Nullable="false" />
+    <Property Name="ClientGroup" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ClientName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AREntities">
+    <Key>
+      <PropertyRef Name="ARID" />
+    </Key>
+    <Property Name="ARID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="AgencyID" Type="int" Nullable="false" />
+    <Property Name="TermID" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="ProjectNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="ContractNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Campaingn" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CompaignStart" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CompaignEnd" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CompaignAmount" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DueDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="InvoiceNo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="InvoiceDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="InvoiceType" Type="tinyint" Nullable="false" />
+    <Property Name="InvoiceAmount" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RevenueConfirmationDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TermEntities">
+    <Key>
+      <PropertyRef Name="TermID" />
+    </Key>
+    <Property Name="TermID" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="Market" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="Depart" Type="nvarchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="EmpEntities">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmpName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmpEmail" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ARRelatedEmpEntities">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ARID" Type="int" Nullable="false" />
+    <Property Name="EmpID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CollectionEntities">
+    <Key>
+      <PropertyRef Name="CollectionID" />
+    </Key>
+    <Property Name="CollectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="true" />
+    <Property Name="CollectionDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AgencyEntityAgencyID" Type="int" Nullable="false" />
+    <Property Name="CollectionAmount" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CollectionRemark" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WriteOffEntities">
+    <Key>
+      <PropertyRef Name="WriteOffID" />
+    </Key>
+    <Property Name="WriteOffID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AREntityARID" Type="int" Nullable="false" />
+    <Property Name="CollectionID" Type="int" Nullable="false" />
+    <Property Name="WriteOffDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="WriteOffAmount" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="WriteOffRemark" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="AREntityClientEntity">
+    <End Role="AREntity" Type="AR2AP.Store.AREntities" Multiplicity="*" />
+    <End Role="ClientEntity" Type="AR2AP.Store.ClientEntities" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ClientEntity">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="AREntity">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AgencyEntityAREntity">
+    <End Role="AREntity" Type="AR2AP.Store.AREntities" Multiplicity="*" />
+    <End Role="AgencyEntity" Type="AR2AP.Store.AgencyEntities" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="AgencyEntity">
+        <PropertyRef Name="AgencyID" />
+      </Principal>
+      <Dependent Role="AREntity">
+        <PropertyRef Name="AgencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AREntityTermEntity">
+    <End Role="AREntity" Type="AR2AP.Store.AREntities" Multiplicity="*" />
+    <End Role="TermEntity" Type="AR2AP.Store.TermEntities" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="TermEntity">
+        <PropertyRef Name="TermID" />
+      </Principal>
+      <Dependent Role="AREntity">
+        <PropertyRef Name="TermID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ARRelatedEmpEntityAREntity">
+    <End Role="ARRelatedEmpEntity" Type="AR2AP.Store.ARRelatedEmpEntities" Multiplicity="*" />
+    <End Role="AREntity" Type="AR2AP.Store.AREntities" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="AREntity">
+        <PropertyRef Name="ARID" />
+      </Principal>
+      <Dependent Role="ARRelatedEmpEntity">
+        <PropertyRef Name="ARID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ARRelatedEmpEntityEmpEntity">
+    <End Role="ARRelatedEmpEntity" Type="AR2AP.Store.ARRelatedEmpEntities" Multiplicity="*" />
+    <End Role="EmpEntity" Type="AR2AP.Store.EmpEntities" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="EmpEntity">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="ARRelatedEmpEntity">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CollectionClientEntity">
+    <End Role="Collection" Type="AR2AP.Store.CollectionEntities" Multiplicity="*" />
+    <End Role="ClientEntity" Type="AR2AP.Store.ClientEntities" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ClientEntity">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="Collection">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CollectionEntityAgencyEntity">
+    <End Role="CollectionEntity" Type="AR2AP.Store.CollectionEntities" Multiplicity="*" />
+    <End Role="AgencyEntity" Type="AR2AP.Store.AgencyEntities" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="AgencyEntity">
+        <PropertyRef Name="AgencyID" />
+      </Principal>
+      <Dependent Role="CollectionEntity">
+        <PropertyRef Name="AgencyEntityAgencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WriteOffEntityAREntity">
+    <End Role="WriteOffEntity" Type="AR2AP.Store.WriteOffEntities" Multiplicity="*" />
+    <End Role="AREntity" Type="AR2AP.Store.AREntities" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="AREntity">
+        <PropertyRef Name="ARID" />
+      </Principal>
+      <Dependent Role="WriteOffEntity">
+        <PropertyRef Name="AREntityARID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WriteOffEntityCollectionEntity">
+    <End Role="WriteOffEntity" Type="AR2AP.Store.WriteOffEntities" Multiplicity="*" />
+    <End Role="CollectionEntity" Type="AR2AP.Store.CollectionEntities" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="CollectionEntity">
+        <PropertyRef Name="CollectionID" />
+      </Principal>
+      <Dependent Role="WriteOffEntity">
+        <PropertyRef Name="CollectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="AR2AP" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="AR2APContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AgencyEntities" EntityType="AR2AP.AgencyEntity" />
+          <EntitySet Name="ClientEntities" EntityType="AR2AP.ClientEntity" />
+          <EntitySet Name="AREntities" EntityType="AR2AP.AREntity" />
+          <AssociationSet Name="AREntityClientEntity" Association="AR2AP.AREntityClientEntity">
+            <End Role="AREntity" EntitySet="AREntities" />
+            <End Role="ClientEntity" EntitySet="ClientEntities" />
+          </AssociationSet>
+          <AssociationSet Name="AgencyEntityAREntity" Association="AR2AP.AgencyEntityAREntity">
+            <End Role="AREntity" EntitySet="AREntities" />
+            <End Role="AgencyEntity" EntitySet="AgencyEntities" />
+          </AssociationSet>
+          <EntitySet Name="TermEntities" EntityType="AR2AP.TermEntity" />
+          <AssociationSet Name="AREntityTermEntity" Association="AR2AP.AREntityTermEntity">
+            <End Role="AREntity" EntitySet="AREntities" />
+            <End Role="TermEntity" EntitySet="TermEntities" />
+          </AssociationSet>
+          <EntitySet Name="EmpEntities" EntityType="AR2AP.EmpEntity" />
+          <EntitySet Name="ARRelatedEmpEntities" EntityType="AR2AP.ARRelatedEmpEntity" />
+          <AssociationSet Name="ARRelatedEmpEntityAREntity" Association="AR2AP.ARRelatedEmpEntityAREntity">
+            <End Role="ARRelatedEmpEntity" EntitySet="ARRelatedEmpEntities" />
+            <End Role="AREntity" EntitySet="AREntities" />
+          </AssociationSet>
+          <AssociationSet Name="ARRelatedEmpEntityEmpEntity" Association="AR2AP.ARRelatedEmpEntityEmpEntity">
+            <End Role="ARRelatedEmpEntity" EntitySet="ARRelatedEmpEntities" />
+            <End Role="EmpEntity" EntitySet="EmpEntities" />
+          </AssociationSet>
+          <EntitySet Name="CollectionEntities" EntityType="AR2AP.CollectionEntity" />
+          <AssociationSet Name="CollectionClientEntity" Association="AR2AP.CollectionClientEntity">
+            <End Role="Collection" EntitySet="CollectionEntities" />
+            <End Role="ClientEntity" EntitySet="ClientEntities" />
+          </AssociationSet>
+          <AssociationSet Name="CollectionEntityAgencyEntity" Association="AR2AP.CollectionEntityAgencyEntity">
+            <End Role="CollectionEntity" EntitySet="CollectionEntities" />
+            <End Role="AgencyEntity" EntitySet="AgencyEntities" />
+          </AssociationSet>
+          <EntitySet Name="WriteOffEntities" EntityType="AR2AP.WriteOffEntity" />
+          <AssociationSet Name="WriteOffEntityAREntity" Association="AR2AP.WriteOffEntityAREntity">
+            <End Role="WriteOffEntity" EntitySet="WriteOffEntities" />
+            <End Role="AREntity" EntitySet="AREntities" />
+          </AssociationSet>
+          <AssociationSet Name="WriteOffEntityCollectionEntity" Association="AR2AP.WriteOffEntityCollectionEntity">
+            <End Role="WriteOffEntity" EntitySet="WriteOffEntities" />
+            <End Role="CollectionEntity" EntitySet="CollectionEntities" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="AgencyEntity">
+          <Key>
+            <PropertyRef Name="AgencyID" />
+          </Key>
+          <Property Type="Int32" Name="AgencyID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Currency" Nullable="false" MaxLength="10" />
+          <NavigationProperty Name="AREntities" Relationship="AR2AP.AgencyEntityAREntity" FromRole="AgencyEntity" ToRole="AREntity" />
+          <NavigationProperty Name="CollectionEntities" Relationship="AR2AP.CollectionEntityAgencyEntity" FromRole="AgencyEntity" ToRole="CollectionEntity" />
+        </EntityType>
+        <EntityType Name="ClientEntity">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Type="Int32" Name="ClientID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="AR2AP.ClientTypeEnum" Name="ClientType" Nullable="false" />
+          <Property Type="String" Name="ClientGroup" Nullable="false" />
+          <Property Type="String" Name="ClientName" Nullable="false" />
+          <NavigationProperty Name="AREntities" Relationship="AR2AP.AREntityClientEntity" FromRole="ClientEntity" ToRole="AREntity" />
+          <NavigationProperty Name="Collection" Relationship="AR2AP.CollectionClientEntity" FromRole="ClientEntity" ToRole="Collection" />
+        </EntityType>
+        <EnumType Name="ClientTypeEnum" UnderlyingType="Byte" IsFlags="true">
+          <Member Name="直客" Value="1" />
+          <Member Name="代理" Value="2" />
+        </EnumType>
+        <EntityType Name="AREntity">
+          <Key>
+            <PropertyRef Name="ARID" />
+          </Key>
+          <Property Type="Int32" Name="ARID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ClientEntity" Relationship="AR2AP.AREntityClientEntity" FromRole="AREntity" ToRole="ClientEntity" />
+          <Property Type="Int32" Name="ClientID" Nullable="false" />
+          <NavigationProperty Name="AgencyEntity" Relationship="AR2AP.AgencyEntityAREntity" FromRole="AREntity" ToRole="AgencyEntity" />
+          <Property Type="Int32" Name="AgencyID" Nullable="false" />
+          <NavigationProperty Name="TermEntity" Relationship="AR2AP.AREntityTermEntity" FromRole="AREntity" ToRole="TermEntity" />
+          <Property Type="String" Name="TermID" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="ProjectNo" Nullable="false" MaxLength="50" >
+            <Documentation>
+              <Summary>项目编号</Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty Name="ARRelatedEmpEntities" Relationship="AR2AP.ARRelatedEmpEntityAREntity" FromRole="AREntity" ToRole="ARRelatedEmpEntity" />
+          <Property Type="String" Name="ContractNo" Nullable="false" MaxLength="50" >
+            <Documentation>
+              <Summary>合同编号</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="Campaingn" Nullable="false" >
+            <Documentation>
+              <Summary>项目</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="CompaignStart" Nullable="false" >
+            <Documentation>
+              <Summary>项目开始日期</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="CompaignEnd" Nullable="false" >
+            <Documentation>
+              <Summary>项目结束日期</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="CompaignAmount" Nullable="false" >
+            <Documentation>
+              <Summary>项目金额</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="DueDate" Nullable="false" >
+            <Documentation>
+              <Summary>收款到期日</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="InvoiceNo" Nullable="false" >
+            <Documentation>
+              <Summary>发票号码</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="InvoiceDate" Nullable="false" >
+            <Documentation>
+              <Summary>开票时间</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="AR2AP.InvoiceTypeEnum" Name="InvoiceType" Nullable="false" />
+          <Property Type="String" Name="InvoiceAmount" Nullable="false" >
+            <Documentation>
+              <Summary>发票金额</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="RevenueConfirmationDate" Nullable="false" >
+            <Documentation>
+              <Summary>应收确认时间</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="Remark" Nullable="false" />
+          <NavigationProperty Name="WriteOffEntities" Relationship="AR2AP.WriteOffEntityAREntity" FromRole="AREntity" ToRole="WriteOffEntity" />
+        </EntityType>
+        <Association Name="AREntityClientEntity">
+          <End Type="AR2AP.AREntity" Role="AREntity" Multiplicity="*" />
+          <End Type="AR2AP.ClientEntity" Role="ClientEntity" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="ClientEntity">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="AREntity">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AgencyEntityAREntity">
+          <End Type="AR2AP.AREntity" Role="AREntity" Multiplicity="*" />
+          <End Type="AR2AP.AgencyEntity" Role="AgencyEntity" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="AgencyEntity">
+              <PropertyRef Name="AgencyID" />
+            </Principal>
+            <Dependent Role="AREntity">
+              <PropertyRef Name="AgencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TermEntity">
+          <Key>
+            <PropertyRef Name="TermID" />
+          </Key>
+          <Property Type="String" Name="TermID" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="10" />
+          <Property Type="String" Name="Market" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Depart" Nullable="false" MaxLength="10" />
+          <NavigationProperty Name="AREntities" Relationship="AR2AP.AREntityTermEntity" FromRole="TermEntity" ToRole="AREntity" />
+        </EntityType>
+        <Association Name="AREntityTermEntity">
+          <End Type="AR2AP.AREntity" Role="AREntity" Multiplicity="*" />
+          <End Type="AR2AP.TermEntity" Role="TermEntity" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="TermEntity">
+              <PropertyRef Name="TermID" />
+            </Principal>
+            <Dependent Role="AREntity">
+              <PropertyRef Name="TermID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EmpEntity">
+          <Key>
+            <PropertyRef Name="EmpID" />
+          </Key>
+          <Property Type="Int32" Name="EmpID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="EmpName" Nullable="false" />
+          <Property Type="String" Name="EmpEmail" Nullable="false" />
+          <NavigationProperty Name="ARRelatedEmpEntities" Relationship="AR2AP.ARRelatedEmpEntityEmpEntity" FromRole="EmpEntity" ToRole="ARRelatedEmpEntity" />
+        </EntityType>
+        <EntityType Name="ARRelatedEmpEntity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="AREntity" Relationship="AR2AP.ARRelatedEmpEntityAREntity" FromRole="ARRelatedEmpEntity" ToRole="AREntity" />
+          <Property Type="Int32" Name="ARID" Nullable="false" />
+          <NavigationProperty Name="EmpEntity" Relationship="AR2AP.ARRelatedEmpEntityEmpEntity" FromRole="ARRelatedEmpEntity" ToRole="EmpEntity" />
+          <Property Type="Int32" Name="EmpID" Nullable="false" />
+        </EntityType>
+        <Association Name="ARRelatedEmpEntityAREntity">
+          <End Type="AR2AP.ARRelatedEmpEntity" Role="ARRelatedEmpEntity" Multiplicity="*" />
+          <End Type="AR2AP.AREntity" Role="AREntity" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="AREntity">
+              <PropertyRef Name="ARID" />
+            </Principal>
+            <Dependent Role="ARRelatedEmpEntity">
+              <PropertyRef Name="ARID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ARRelatedEmpEntityEmpEntity">
+          <End Type="AR2AP.ARRelatedEmpEntity" Role="ARRelatedEmpEntity" Multiplicity="*" />
+          <End Type="AR2AP.EmpEntity" Role="EmpEntity" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="EmpEntity">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="ARRelatedEmpEntity">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CollectionEntity">
+          <Key>
+            <PropertyRef Name="CollectionID" />
+          </Key>
+          <Property Type="Int32" Name="CollectionID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ClientEntity" Relationship="AR2AP.CollectionClientEntity" FromRole="Collection" ToRole="ClientEntity" />
+          <Property Type="Int32" Name="ClientID" Nullable="true" />
+          <Property Type="String" Name="CollectionDate" Nullable="false" />
+          <NavigationProperty Name="AgencyEntity" Relationship="AR2AP.CollectionEntityAgencyEntity" FromRole="CollectionEntity" ToRole="AgencyEntity" />
+          <Property Type="Int32" Name="AgencyEntityAgencyID" Nullable="false" />
+          <Property Type="String" Name="CollectionAmount" Nullable="false" />
+          <Property Type="String" Name="CollectionRemark" Nullable="false" />
+          <NavigationProperty Name="WriteOffEntities" Relationship="AR2AP.WriteOffEntityCollectionEntity" FromRole="CollectionEntity" ToRole="WriteOffEntity" />
+        </EntityType>
+        <Association Name="CollectionClientEntity">
+          <End Type="AR2AP.CollectionEntity" Role="Collection" Multiplicity="*" />
+          <End Type="AR2AP.ClientEntity" Role="ClientEntity" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ClientEntity">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Collection">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CollectionEntityAgencyEntity">
+          <End Type="AR2AP.CollectionEntity" Role="CollectionEntity" Multiplicity="*" />
+          <End Type="AR2AP.AgencyEntity" Role="AgencyEntity" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="AgencyEntity">
+              <PropertyRef Name="AgencyID" />
+            </Principal>
+            <Dependent Role="CollectionEntity">
+              <PropertyRef Name="AgencyEntityAgencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="WriteOffEntity">
+          <Key>
+            <PropertyRef Name="WriteOffID" />
+          </Key>
+          <Property Type="Int32" Name="WriteOffID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="AREntity" Relationship="AR2AP.WriteOffEntityAREntity" FromRole="WriteOffEntity" ToRole="AREntity" />
+          <Property Type="Int32" Name="AREntityARID" Nullable="false" />
+          <NavigationProperty Name="CollectionEntity" Relationship="AR2AP.WriteOffEntityCollectionEntity" FromRole="WriteOffEntity" ToRole="CollectionEntity" />
+          <Property Type="Int32" Name="CollectionID" Nullable="false" />
+          <Property Type="String" Name="WriteOffDate" Nullable="false" />
+          <Property Type="String" Name="WriteOffAmount" Nullable="false" />
+          <Property Type="String" Name="WriteOffRemark" Nullable="false" />
+        </EntityType>
+        <Association Name="WriteOffEntityAREntity">
+          <End Type="AR2AP.WriteOffEntity" Role="WriteOffEntity" Multiplicity="*" />
+          <End Type="AR2AP.AREntity" Role="AREntity" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="AREntity">
+              <PropertyRef Name="ARID" />
+            </Principal>
+            <Dependent Role="WriteOffEntity">
+              <PropertyRef Name="AREntityARID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WriteOffEntityCollectionEntity">
+          <End Type="AR2AP.WriteOffEntity" Role="WriteOffEntity" Multiplicity="*" />
+          <End Type="AR2AP.CollectionEntity" Role="CollectionEntity" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="CollectionEntity">
+              <PropertyRef Name="CollectionID" />
+            </Principal>
+            <Dependent Role="WriteOffEntity">
+              <PropertyRef Name="CollectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EnumType Name="InvoiceTypeEnum" UnderlyingType="Byte" IsFlags="true">
+          <Member Name="广告业" Value="1" />
+          <Member Name="服务业" Value="2" />
+        </EnumType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
-        <Alias Key="Model" Value="AR2AP" />
-        <Alias Key="Target" Value="AR2AP.Store" />
-        <EntityContainerMapping CdmEntityContainer="AR2APContainer" StorageEntityContainer="AR2APTargetContainer">
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AR2APStoreContainer" CdmEntityContainer="AR2APContainer">
+    <EntitySetMapping Name="AgencyEntities">
+      <EntityTypeMapping TypeName="IsTypeOf(AR2AP.AgencyEntity)">
+        <MappingFragment StoreEntitySet="AgencyEntities">
+          <ScalarProperty Name="AgencyID" ColumnName="AgencyID" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientEntities">
+      <EntityTypeMapping TypeName="IsTypeOf(AR2AP.ClientEntity)">
+        <MappingFragment StoreEntitySet="ClientEntities">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="ClientType" ColumnName="ClientType" />
+          <ScalarProperty Name="ClientGroup" ColumnName="ClientGroup" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AREntities">
+      <EntityTypeMapping TypeName="IsTypeOf(AR2AP.AREntity)">
+        <MappingFragment StoreEntitySet="AREntities">
+          <ScalarProperty Name="ARID" ColumnName="ARID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="AgencyID" ColumnName="AgencyID" />
+          <ScalarProperty Name="TermID" ColumnName="TermID" />
+          <ScalarProperty Name="ProjectNo" ColumnName="ProjectNo" />
+          <ScalarProperty Name="ContractNo" ColumnName="ContractNo" />
+          <ScalarProperty Name="Campaingn" ColumnName="Campaingn" />
+          <ScalarProperty Name="CompaignStart" ColumnName="CompaignStart" />
+          <ScalarProperty Name="CompaignEnd" ColumnName="CompaignEnd" />
+          <ScalarProperty Name="CompaignAmount" ColumnName="CompaignAmount" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="InvoiceType" ColumnName="InvoiceType" />
+          <ScalarProperty Name="InvoiceAmount" ColumnName="InvoiceAmount" />
+          <ScalarProperty Name="RevenueConfirmationDate" ColumnName="RevenueConfirmationDate" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TermEntities">
+      <EntityTypeMapping TypeName="IsTypeOf(AR2AP.TermEntity)">
+        <MappingFragment StoreEntitySet="TermEntities">
+          <ScalarProperty Name="TermID" ColumnName="TermID" />
+          <ScalarProperty Name="Market" ColumnName="Market" />
+          <ScalarProperty Name="Depart" ColumnName="Depart" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmpEntities">
+      <EntityTypeMapping TypeName="IsTypeOf(AR2AP.EmpEntity)">
+        <MappingFragment StoreEntitySet="EmpEntities">
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+          <ScalarProperty Name="EmpEmail" ColumnName="EmpEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ARRelatedEmpEntities">
+      <EntityTypeMapping TypeName="IsTypeOf(AR2AP.ARRelatedEmpEntity)">
+        <MappingFragment StoreEntitySet="ARRelatedEmpEntities">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ARID" ColumnName="ARID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CollectionEntities">
+      <EntityTypeMapping TypeName="IsTypeOf(AR2AP.CollectionEntity)">
+        <MappingFragment StoreEntitySet="CollectionEntities">
+          <ScalarProperty Name="CollectionID" ColumnName="CollectionID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="CollectionDate" ColumnName="CollectionDate" />
+          <ScalarProperty Name="AgencyEntityAgencyID" ColumnName="AgencyEntityAgencyID" />
+          <ScalarProperty Name="CollectionAmount" ColumnName="CollectionAmount" />
+          <ScalarProperty Name="CollectionRemark" ColumnName="CollectionRemark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WriteOffEntities">
+      <EntityTypeMapping TypeName="IsTypeOf(AR2AP.WriteOffEntity)">
+        <MappingFragment StoreEntitySet="WriteOffEntities">
+          <ScalarProperty Name="WriteOffID" ColumnName="WriteOffID" />
+          <ScalarProperty Name="AREntityARID" ColumnName="AREntityARID" />
+          <ScalarProperty Name="CollectionID" ColumnName="CollectionID" />
+          <ScalarProperty Name="WriteOffDate" ColumnName="WriteOffDate" />
+          <ScalarProperty Name="WriteOffAmount" ColumnName="WriteOffAmount" />
+          <ScalarProperty Name="WriteOffRemark" ColumnName="WriteOffRemark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">

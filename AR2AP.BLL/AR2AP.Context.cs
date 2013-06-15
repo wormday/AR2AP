@@ -25,5 +25,13 @@ namespace AR2AP.BLL
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<AgencyEntity> AgencyEntities { get; set; }
+        public DbSet<ClientEntity> ClientEntities { get; set; }
+        public DbSet<AREntity> AREntities { get; set; }
+        public DbSet<TermEntity> TermEntities { get; set; }
+        public DbSet<EmpEntity> EmpEntities { get; set; }
+        public DbSet<ARRelatedEmpEntity> ARRelatedEmpEntities { get; set; }
+        public DbSet<CollectionEntity> CollectionEntities { get; set; }
+        public DbSet<WriteOffEntity> WriteOffEntities { get; set; }
     }
 }
