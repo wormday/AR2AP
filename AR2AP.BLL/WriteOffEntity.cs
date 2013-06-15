@@ -12,6 +12,7 @@ namespace AR2AP.BLL
     using System;
     using System.Collections.Generic;
     
+    /// <summary>销账实体</summary>
     public partial class WriteOffEntity
     {
         public int WriteOffID { get; set; }

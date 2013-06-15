@@ -12,6 +12,7 @@ namespace AR2AP.BLL
     using System;
     using System.Collections.Generic;
     
+    /// <summary>Agency（本集团的相关公司）实体</summary>
     public partial class AgencyEntity
     {
         public AgencyEntity()
@@ -19,7 +20,6 @@ namespace AR2AP.BLL
             this.AREntities = new HashSet<AREntity>();
             this.CollectionEntities = new HashSet<CollectionEntity>();
         }
-    
         public int AgencyID { get; set; }
         public string Currency { get; set; }
     

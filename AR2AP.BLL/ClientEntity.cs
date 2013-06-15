@@ -12,6 +12,7 @@ namespace AR2AP.BLL
     using System;
     using System.Collections.Generic;
     
+    /// <summary>客户实体</summary>
     public partial class ClientEntity
     {
         public ClientEntity()
@@ -19,10 +20,13 @@ namespace AR2AP.BLL
             this.AREntities = new HashSet<AREntity>();
             this.Collection = new HashSet<CollectionEntity>();
         }
-    
+        /// <summary>客户编号</summary>
         public int ClientID { get; set; }
+        /// <summary>客户类型(直客/代理)</summary>
         public ClientTypeEnum ClientType { get; set; }
+        /// <summary>客户所属的集团</summary>
         public string ClientGroup { get; set; }
+        /// <summary>客户名称</summary>
         public string ClientName { get; set; }
     
         public virtual ICollection<AREntity> AREntities { get; set; }

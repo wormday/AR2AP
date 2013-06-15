@@ -12,6 +12,7 @@ namespace AR2AP.BLL
     using System;
     using System.Collections.Generic;
     
+    /// <summary>应收账款(AR)实体</summary>
     public partial class AREntity
     {
         public AREntity()
@@ -19,22 +20,34 @@ namespace AR2AP.BLL
             this.ARRelatedEmpEntities = new HashSet<ARRelatedEmpEntity>();
             this.WriteOffEntities = new HashSet<WriteOffEntity>();
         }
-    
+        /// <summary>AR编号</summary>
         public int ARID { get; set; }
+        /// <summary>客户编号</summary>
         public int ClientID { get; set; }
         public int AgencyID { get; set; }
         public string TermID { get; set; }
+        /// <summary>项目编号</summary>
         public string ProjectNo { get; set; }
+        /// <summary>合同编号</summary>
         public string ContractNo { get; set; }
+        /// <summary>项目</summary>
         public string Campaingn { get; set; }
+        /// <summary>项目开始日期</summary>
         public string CompaignStart { get; set; }
+        /// <summary>项目结束日期</summary>
         public string CompaignEnd { get; set; }
+        /// <summary>项目金额</summary>
         public string CompaignAmount { get; set; }
+        /// <summary>收款到期日</summary>
         public string DueDate { get; set; }
+        /// <summary>发票号码</summary>
         public string InvoiceNo { get; set; }
+        /// <summary>开票时间</summary>
         public string InvoiceDate { get; set; }
         public InvoiceTypeEnum InvoiceType { get; set; }
+        /// <summary>发票金额</summary>
         public string InvoiceAmount { get; set; }
+        /// <summary>应收确认时间</summary>
         public string RevenueConfirmationDate { get; set; }
         public string Remark { get; set; }
     

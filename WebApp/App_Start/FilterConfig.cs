@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace WebApp
+namespace AR2AP.WebApp
 {
     public class FilterConfig
     {

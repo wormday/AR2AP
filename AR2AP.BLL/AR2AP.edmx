@@ -102,8 +102,10 @@
       <PropertyRef Name="EmpID" />
     </Key>
     <Property Name="EmpID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="EmpName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="EmpEmail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmpName" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="EmpEmail" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="Username" Type="nvarchar" Nullable="true" MaxLength="16" />
+    <Property Name="Password" Type="nvarchar" Nullable="true" MaxLength="16" />
   </EntityType>
   <EntityType Name="ARRelatedEmpEntities">
     <Key>
@@ -294,6 +296,9 @@
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AgencyEntity">
+          <Documentation>
+            <Summary>Agency（本集团的相关公司）实体</Summary>
+          </Documentation>
           <Key>
             <PropertyRef Name="AgencyID" />
           </Key>
@@ -303,13 +308,32 @@
           <NavigationProperty Name="CollectionEntities" Relationship="AR2AP.CollectionEntityAgencyEntity" FromRole="AgencyEntity" ToRole="CollectionEntity" />
         </EntityType>
         <EntityType Name="ClientEntity">
+          <Documentation>
+            <Summary>客户实体</Summary>
+          </Documentation>
           <Key>
             <PropertyRef Name="ClientID" />
           </Key>
-          <Property Type="Int32" Name="ClientID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="AR2AP.ClientTypeEnum" Name="ClientType" Nullable="false" />
-          <Property Type="String" Name="ClientGroup" Nullable="false" />
-          <Property Type="String" Name="ClientName" Nullable="false" />
+          <Property Type="Int32" Name="ClientID" Nullable="false" annotation:StoreGeneratedPattern="Identity" >
+            <Documentation>
+              <Summary>客户编号</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="AR2AP.ClientTypeEnum" Name="ClientType" Nullable="false" >
+            <Documentation>
+              <Summary>客户类型(直客/代理)</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="ClientGroup" Nullable="false" >
+            <Documentation>
+              <Summary>客户所属的集团</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="ClientName" Nullable="false" >
+            <Documentation>
+              <Summary>客户名称</Summary>
+            </Documentation>
+          </Property>
           <NavigationProperty Name="AREntities" Relationship="AR2AP.AREntityClientEntity" FromRole="ClientEntity" ToRole="AREntity" />
           <NavigationProperty Name="Collection" Relationship="AR2AP.CollectionClientEntity" FromRole="ClientEntity" ToRole="Collection" />
         </EntityType>
@@ -318,12 +342,23 @@
           <Member Name="代理" Value="2" />
         </EnumType>
         <EntityType Name="AREntity">
+          <Documentation>
+            <Summary>应收账款(AR)实体</Summary>
+          </Documentation>
           <Key>
             <PropertyRef Name="ARID" />
           </Key>
-          <Property Type="Int32" Name="ARID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ARID" Nullable="false" annotation:StoreGeneratedPattern="Identity" >
+            <Documentation>
+              <Summary>AR编号</Summary>
+            </Documentation>
+          </Property>
           <NavigationProperty Name="ClientEntity" Relationship="AR2AP.AREntityClientEntity" FromRole="AREntity" ToRole="ClientEntity" />
-          <Property Type="Int32" Name="ClientID" Nullable="false" />
+          <Property Type="Int32" Name="ClientID" Nullable="false" >
+            <Documentation>
+              <Summary>客户编号</Summary>
+            </Documentation>
+          </Property>
           <NavigationProperty Name="AgencyEntity" Relationship="AR2AP.AgencyEntityAREntity" FromRole="AREntity" ToRole="AgencyEntity" />
           <Property Type="Int32" Name="AgencyID" Nullable="false" />
           <NavigationProperty Name="TermEntity" Relationship="AR2AP.AREntityTermEntity" FromRole="AREntity" ToRole="TermEntity" />
@@ -413,6 +448,9 @@
           </ReferentialConstraint>
         </Association>
         <EntityType Name="TermEntity">
+          <Documentation>
+            <Summary>业务团队</Summary>
+          </Documentation>
           <Key>
             <PropertyRef Name="TermID" />
           </Key>
@@ -434,13 +472,38 @@
           </ReferentialConstraint>
         </Association>
         <EntityType Name="EmpEntity">
+          <Documentation>
+            <Summary>员工实体</Summary>
+          </Documentation>
           <Key>
             <PropertyRef Name="EmpID" />
           </Key>
-          <Property Type="Int32" Name="EmpID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="EmpName" Nullable="false" />
-          <Property Type="String" Name="EmpEmail" Nullable="false" />
+          <Property Type="Int32" Name="EmpID" Nullable="false" annotation:StoreGeneratedPattern="Identity" >
+            <Documentation>
+              <Summary>员工编号</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="EmpName" Nullable="false" MaxLength="200" >
+            <Documentation>
+              <Summary>员工姓名</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="EmpEmail" Nullable="true" MaxLength="200" >
+            <Documentation>
+              <Summary>员工电子邮件</Summary>
+            </Documentation>
+          </Property>
           <NavigationProperty Name="ARRelatedEmpEntities" Relationship="AR2AP.ARRelatedEmpEntityEmpEntity" FromRole="EmpEntity" ToRole="ARRelatedEmpEntity" />
+          <Property Type="String" Name="Username" Nullable="true" MaxLength="16" >
+            <Documentation>
+              <Summary>登陆本系统的用户名</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="16" >
+            <Documentation>
+              <Summary>登陆本系统的密码</Summary>
+            </Documentation>
+          </Property>
         </EntityType>
         <EntityType Name="ARRelatedEmpEntity">
           <Key>
@@ -477,6 +540,9 @@
           </ReferentialConstraint>
         </Association>
         <EntityType Name="CollectionEntity">
+          <Documentation>
+            <Summary>收款实体</Summary>
+          </Documentation>
           <Key>
             <PropertyRef Name="CollectionID" />
           </Key>
@@ -515,6 +581,9 @@
           </ReferentialConstraint>
         </Association>
         <EntityType Name="WriteOffEntity">
+          <Documentation>
+            <Summary>销账实体</Summary>
+          </Documentation>
           <Key>
             <PropertyRef Name="WriteOffID" />
           </Key>
@@ -617,6 +686,8 @@
           <ScalarProperty Name="EmpID" ColumnName="EmpID" />
           <ScalarProperty Name="EmpName" ColumnName="EmpName" />
           <ScalarProperty Name="EmpEmail" ColumnName="EmpEmail" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

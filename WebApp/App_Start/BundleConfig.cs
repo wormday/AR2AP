@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace WebApp
+namespace AR2AP.WebApp
 {
     public class BundleConfig
     {

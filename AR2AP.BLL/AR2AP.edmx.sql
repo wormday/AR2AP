@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 06/15/2013 14:01:54
+-- Date Created: 06/15/2013 16:48:15
 -- Generated from EDMX file: D:\Projects\AR2AP\AR2AP.BLL\AR2AP.edmx
 -- --------------------------------------------------
 
@@ -127,8 +127,10 @@ GO
 -- Creating table 'EmpEntities'
 CREATE TABLE [dbo].[EmpEntities] (
     [EmpID] int IDENTITY(1,1) NOT NULL,
-    [EmpName] nvarchar(max)  NOT NULL,
-    [EmpEmail] nvarchar(max)  NOT NULL
+    [EmpName] nvarchar(200)  NOT NULL,
+    [EmpEmail] nvarchar(200)  NULL,
+    [Username] nvarchar(16)  NULL,
+    [Password] nvarchar(16)  NULL
 );
 GO
 

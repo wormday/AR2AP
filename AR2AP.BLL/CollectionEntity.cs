@@ -12,13 +12,13 @@ namespace AR2AP.BLL
     using System;
     using System.Collections.Generic;
     
+    /// <summary>收款实体</summary>
     public partial class CollectionEntity
     {
         public CollectionEntity()
         {
             this.WriteOffEntities = new HashSet<WriteOffEntity>();
         }
-    
         public int CollectionID { get; set; }
         public Nullable<int> ClientID { get; set; }
         public string CollectionDate { get; set; }
