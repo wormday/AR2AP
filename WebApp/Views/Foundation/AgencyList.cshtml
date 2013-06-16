@@ -2,11 +2,27 @@
     ViewBag.Title = "AgencyList";
 }
 @model AR2AP.WebApp.Models.Foundation.SimpleListVModel<AR2AP.BLL.AgencyEntity>
+@section submenu
+{
+    <div style=" font-size: 1.2em;
+    text-align: left;
+    padding: 0.5em 2em 0.5em 1em;
+	background-color:#e2e2e2; margin-bottom:10px;" class="ui-corner-all">
+        Padddd kkk
+    </div>
+    <ul id="leftmenu">
+        <li><a href="#">Employee</a></li>
+        <li><a href="#">Agency</a></li>
+        <li><a href="#">Client</a></li>
+        <li><a href="#">Team</a></li>
+    </ul>
+}
+
 <table>
     <tr>
-        <th>TermID</th>
-        <th>Depart</th>
-        <th>Market</th>
+        <th>ID</th>
+        <th>Agency Name</th>
+        <th>Currency Type</th>
     </tr>
 
     @foreach (var item in Model.Entities)
@@ -18,3 +34,8 @@
         </tr>
     }
 </table>
+<script>
+    $(function () {
+        $("#leftmenu").menu();
+    });
+</script>

@@ -95,7 +95,7 @@ h5, h6 {
 ----------------------------------------------------------*/
 .content-wrapper {
     margin: 0 auto;
-    max-width: 960px;
+    max-width: 1160px;
 }
 
 #body {
@@ -105,8 +105,6 @@ h5, h6 {
 }
 
     .main-content {
-        background: url("../Images/accent.png") no-repeat;
-        padding-left: 10px;
         padding-top: 30px;
     }
 
@@ -424,7 +422,7 @@ label.checkbox {
     display: inline;
 }
 
-input, textarea {
+input, textarea,select {
     border: 1px solid #e2e2e2;
     background: #fff;
     color: #333;
@@ -530,7 +528,6 @@ input[type="checkbox"].input-validation-error {
 table {
     border-collapse: collapse;
     border-spacing: 0;
-    margin-top: 0.75em;
     border: 0 none;
 }
 
@@ -538,7 +535,10 @@ th {
     font-size: 1.2em;
     text-align: left;
     border: none 0px;
-    padding-left: 0;
+	border-bottom:1px solid #FFF;
+	border-top:1px solid #FFF;
+    padding: 0.5em 2em 0.5em 1em;
+	background-color:#e2e2e2
 }
 
     th a {
@@ -550,7 +550,7 @@ th {
         color: #333;
         font-weight: 600;
         text-decoration: none;
-        padding: 0;
+        
     }
 
     th a:hover {
@@ -578,8 +578,10 @@ th {
     }
 
 td {
-    padding: 0.25em 2em 0.25em 0em;
+    padding: 0.5em 2em 0.5em 1em;
     border: 0 none;
+	border-bottom:1px solid #FFF;
+	background-color:#f2f2f2
 }
 
 tr.pager td {

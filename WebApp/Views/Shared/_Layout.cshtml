@@ -7,13 +7,28 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/modernizr")
+    <style type="text/css">
+        #left
+        {
+            width: 200px;
+            float: left;
+        }
+
+        #right
+        {
+            margin-left: 215px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="content-wrapper">
             <div class="float-left">
-                <p class="site-title">@Html.ActionLink(DateTime.Today.ToString("MMMM dd",new System.Globalization.CultureInfo("en-us")), "Index", "Home")</p>
+                <p class="site-title">@Html.ActionLink(DateTime.Today.ToString("MMMM dd", new System.Globalization.CultureInfo("en-us")), "Index", "Home")</p>
             </div>
             <div class="float-right">
                 <section id="login">
@@ -31,9 +46,13 @@
         </div>
     </header>
     <div id="body">
-        @RenderSection("featured", required: false)
         <section class="content-wrapper main-content clear-fix">
-            @RenderBody()
+            <section id="left">
+                @RenderSection("submenu", required: false)
+            </section>
+            <section id="right">
+                @RenderBody()
+            </section>
         </section>
     </div>
     <footer>
@@ -43,8 +62,6 @@
             </div>
         </div>
     </footer>
-
-    @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>
 </html>
