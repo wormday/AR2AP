@@ -50,35 +50,17 @@ namespace AR2AP.WebApp.Controllers
         #region Employee
         public ActionResult EmpList()
         {
-            AR2AP.Service.EmpService service = new Service.EmpService();
-            EmpListVModel vModel=new EmpListVModel();
-            vModel.EmpEntities=service.GetEntities();
-            return View(vModel);
+            return List<EmpEntity, EmpService>();
         }
         [HttpPost]
-        public ActionResult EmpModify(EmpModifyVModel vModel)
+        public ActionResult EmpMerge(EmpMergeVModel vModel)
         {
-            try
-            {
-                AR2AP.Service.EmpService service = new Service.EmpService();
-                service.Merge(vModel.EmpEntity);
-            }
-            catch (ApplicationException ex)
-            {
-                ModelState.AddModelError("EmpEntity.Username", ex.Message);
-            }
-            return View(vModel);
+            return Merge<EmpEntity, EmpService>(vModel);
         }
         [HttpGet]
-        public ActionResult EmpModify(int id)
+        public ActionResult EmpMerge(int id)
         {
-            EmpModifyVModel vModel = new EmpModifyVModel();
-            if (id >= 0)
-            {
-                AR2AP.Service.EmpService service = new Service.EmpService();
-                vModel.EmpEntity = service.GetEntity(id);
-            }
-            return View(vModel);
+            return Merge<EmpEntity, EmpService>(id);
         }
         #endregion
 
@@ -100,6 +82,37 @@ namespace AR2AP.WebApp.Controllers
         #endregion
 
         #region Agency
+        public ActionResult AgencyList()
+        {
+            return List<AgencyEntity, AgencyService>();
+        }
+        [HttpPost]
+        public ActionResult AgencyMerge(AgencyMergeVModel vModel)
+        {
+            return Merge<AgencyEntity, AgencyService>(vModel);
+        }
+        [HttpGet]
+        public ActionResult AgencyMerge(int? id)
+        {
+            return Merge<AgencyEntity, AgencyService>(id);
+        }
+        #endregion
+
+        #region Client
+        public ActionResult ClientList()
+        {
+            return List<ClientEntity, ClientService>();
+        }
+        [HttpPost]
+        public ActionResult ClientMerge(ClientMergeVModel vModel)
+        {
+            return Merge<ClientEntity, ClientService>(vModel);
+        }
+        [HttpGet]
+        public ActionResult ClientMerge(int? id)
+        {
+            return Merge<ClientEntity, ClientService>(id);
+        }
         #endregion
     }
 }

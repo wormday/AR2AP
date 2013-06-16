@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "AgencyMerge";
+}
+@using AR2AP.WebApp.Common.HtmlHelper
+@model AR2AP.WebApp.Models.Foundation.SimpleMergeVModel<AR2AP.BLL.AgencyEntity>
+@using (Html.BeginForm()) {
+    <fieldset>
+        <legend></legend>
+        <ol>
+            <li>
+                @Html.HiddenFor(m => m.Entity.AgencyID)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Entity.AgencyName)
+                @Html.TextBoxFor(m => m.Entity.AgencyName)
+                @Html.ValidationMessageFor(m => m.Entity.AgencyName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Entity.CurrencyType)
+                @Html.TextBoxFor(m => m.Entity.CurrencyType)
+                @Html.EnumDropDownListFor(m => m.Entity.CurrencyType, AR2AP.BLL.CurrencyTypeEnum.RMB);
+                @Html.ValidationMessageFor(m => m.Entity.CurrencyType)
+            </li>
+        </ol>
+        <input type="submit" value="Save" />
+    </fieldset>
+}

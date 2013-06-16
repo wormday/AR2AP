@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "EmpList";
 }
-@model AR2AP.WebApp.Models.Foundation.EmpListVModel
+@model AR2AP.WebApp.Models.Foundation.SimpleListVModel<AR2AP.BLL.EmpEntity>
 <table>
     <tr>
         <th>ID</th>
@@ -11,7 +11,7 @@
         <th>Password</th>
     </tr>
 
-    @foreach (var item in Model.EmpEntities)
+    @foreach (var item in Model.Entities)
     { 
         <tr>
             <td>@item.EmpID</td>

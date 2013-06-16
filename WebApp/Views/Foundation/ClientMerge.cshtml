@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "AgencyMerge";
+}
+@model AR2AP.WebApp.Models.Foundation.SimpleMergeVModel<AR2AP.BLL.ClientEntity>
+@using (Html.BeginForm()) {
+    <fieldset>
+        <legend></legend>
+        <ol>
+            <li>
+                @Html.HiddenFor(m => m.Entity.ClientID)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Entity.ClientName)
+                @Html.TextBoxFor(m => m.Entity.ClientName)
+                @Html.ValidationMessageFor(m => m.Entity.ClientName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Entity.ClientGroup)
+                @Html.TextBoxFor(m => m.Entity.ClientGroup)
+                @Html.ValidationMessageFor(m => m.Entity.ClientGroup)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Entity.ClientType)
+                @Html.TextBoxFor(m => m.Entity.ClientType)
+                @Html.ValidationMessageFor(m => m.Entity.ClientType)
+            </li>
+        </ol>
+        <input type="submit" value="Save" />
+    </fieldset>
+}

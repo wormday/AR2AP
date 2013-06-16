@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "AgencyList";
+}
+@model AR2AP.WebApp.Models.Foundation.SimpleListVModel<AR2AP.BLL.ClientEntity>
+<table>
+    <tr>
+        <th>ClientID</th>
+        <th>ClientName</th>
+        <th>ClientGroup</th>
+        <th>ClientType</th>
+    </tr>
+
+    @foreach (var item in Model.Entities)
+    { 
+        <tr>
+            <td>@item.ClientID</td>
+            <td><a href="/Foundation/TermMerge/@item.ClientID">@item.ClientName</a></td>
+            <td>@item.ClientGroup</td>
+            <td>@item.ClientType</td>
+        </tr>
+    }
+</table>

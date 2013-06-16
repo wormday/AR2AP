@@ -6,8 +6,7 @@ using AR2AP.BLL;
 
 namespace AR2AP.WebApp.Models.Foundation
 {
-    public class EmpModifyVModel
+    public class ClientMergeVModel : SimpleMergeVModel<ClientEntity>
     {
-        public EmpEntity EmpEntity { get; set; }
     }
 }

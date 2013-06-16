@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "EmpModify";
+}
+@model AR2AP.WebApp.Models.Foundation.SimpleMergeVModel<AR2AP.BLL.EmpEntity>
+@using (Html.BeginForm()) {
+    <fieldset>
+        <legend></legend>
+        <ol>
+            <li>
+                @Html.HiddenFor(m => m.Entity.EmpID)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Entity.EmpName)
+                @Html.TextBoxFor(m => m.Entity.EmpName)
+                @Html.ValidationMessageFor(m => m.Entity.EmpName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Entity.EmpEmail)
+                @Html.TextBoxFor(m => m.Entity.EmpEmail)
+                @Html.ValidationMessageFor(m => m.Entity.EmpEmail)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Entity.Username)
+                @Html.TextBoxFor(m => m.Entity.Username)
+                @Html.ValidationMessageFor(m => m.Entity.Username)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Entity.Password)
+                @Html.PasswordFor(m => m.Entity.Password)
+                @Html.ValidationMessageFor(m => m.Entity.Password)
+            </li>
+        </ol>
+        <input type="submit" value="Save" />
+    </fieldset>
+}

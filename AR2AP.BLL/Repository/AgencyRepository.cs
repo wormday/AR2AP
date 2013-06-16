@@ -15,12 +15,12 @@ namespace AR2AP.BLL.Repository
         }
         public void Add(AgencyEntity entity)
         {
-            throw new NotImplementedException();
+            _context.AgencyEntities.Add(entity);
         }
 
         public AgencyEntity GetByKey(int id)
         {
-            throw new NotImplementedException();
+            return _context.AgencyEntities.Where(o => o.AgencyID == id).Single();
         }
 
         public IEnumerable<AgencyEntity> FindBySpecification(System.Linq.Expressions.Expression<Func<AgencyEntity, bool>> spec)

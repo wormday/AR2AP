@@ -38,6 +38,14 @@ namespace AR2AP.BLL.Repository
         {
             return new TermRepository(_context);
         }
+        public AgencyRepository GetAgencyRepository()
+        {
+            return new AgencyRepository(_context);
+        }
+        public ClientRepository GetClientRepository()
+        {
+            return new ClientRepository(_context);
+        }
         #endregion
     }
 }

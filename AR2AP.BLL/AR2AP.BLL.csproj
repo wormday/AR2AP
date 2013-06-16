@@ -94,6 +94,7 @@
     <Compile Include="Partial\EmpEntity.partial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AgencyRepository.cs" />
+    <Compile Include="Repository\ClientRepository.cs" />
     <Compile Include="Repository\EmpRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\RepositoryTransaction.cs" />

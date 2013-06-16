@@ -176,6 +176,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Authentication\AuthUtility.cs" />
+    <Compile Include="Common\HtmlHelper\DropDownListExtensions.cs" />
+    <Compile Include="Common\HtmlHelper\EnumExtensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FoundationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -183,8 +185,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CurrEmpData.cs" />
-    <Compile Include="Models\Foundation\EmpListVModel.cs" />
-    <Compile Include="Models\Foundation\EmpModifyVModel.cs" />
+    <Compile Include="Models\Foundation\AgencyMergeVModel.cs" />
+    <Compile Include="Models\Foundation\ClientMergeVModel.cs" />
+    <Compile Include="Models\Foundation\EmpMergeVModel.cs" />
     <Compile Include="Models\Foundation\SimpleListVModel.cs" />
     <Compile Include="Models\Foundation\SimpleMergeVModel.cs" />
     <Compile Include="Models\Foundation\TermMergeVModel.cs" />
@@ -285,9 +288,13 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Foundation\EmpList.cshtml" />
-    <Content Include="Views\Foundation\EmpModify.cshtml" />
+    <Content Include="Views\Foundation\EmpMerge.cshtml" />
     <Content Include="Views\Foundation\TermList.cshtml" />
     <Content Include="Views\Foundation\TermMerge.cshtml" />
+    <Content Include="Views\Foundation\AgencyList.cshtml" />
+    <Content Include="Views\Foundation\AgencyMerge.cshtml" />
+    <Content Include="Views\Foundation\ClientList.cshtml" />
+    <Content Include="Views\Foundation\ClientMerge.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
