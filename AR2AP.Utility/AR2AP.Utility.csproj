@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{54D5CCCB-303D-49D7-B616-BA6FD1A2CF79}</ProjectGuid>
+    <ProjectGuid>{E6333DCA-62E0-4950-9464-7716596D9816}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AR2AP.Service</RootNamespace>
-    <AssemblyName>AR2AP.Service</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>AR2AP.Utility</RootNamespace>
+    <AssemblyName>AR2AP.Utility</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,7 +28,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -42,20 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmpService.cs" />
-    <Compile Include="ISimpleService.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Extension\DateTimeExtensions.cs" />
+    <Compile Include="Extension\DecimalExtensions.cs" />
+    <Compile Include="Extension\PredicateExtensions.cs" />
+    <Compile Include="Extension\StringExtensions.cs" />
+    <Compile Include="Http.cs" />
+    <Compile Include="IDCard.cs" />
+    <Compile Include="PinYin.cs" />
+    <Compile Include="PinYin.partial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TermService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AR2AP.BLL\AR2AP.BLL.csproj">
-      <Project>{c020422c-a45e-45cb-b443-e2f70132262a}</Project>
-      <Name>AR2AP.BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AR2AP.Utility\AR2AP.Utility.csproj">
-      <Project>{e6333dca-62e0-4950-9464-7716596d9816}</Project>
-      <Name>AR2AP.Utility</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

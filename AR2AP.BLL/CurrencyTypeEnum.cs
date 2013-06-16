@@ -10,15 +10,10 @@
 namespace AR2AP.BLL
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class ARRelatedEmpEntity
+    public enum CurrencyTypeEnum : byte
     {
-        public int ID { get; set; }
-        public int ARID { get; set; }
-        public short EmpID { get; set; }
-    
-        public virtual AREntity AREntity { get; set; }
-        public virtual EmpEntity EmpEntity { get; set; }
+        RMB = 1,
+        USD = 2
     }
 }

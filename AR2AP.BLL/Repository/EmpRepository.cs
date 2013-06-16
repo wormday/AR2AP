@@ -21,7 +21,7 @@ namespace AR2AP.BLL.Repository
 
         public EmpEntity GetByKey(int id)
         {
-            throw new NotImplementedException();
+            return _context.EmpEntities.Where(o => o.EmpID == id).Single();
         }
 
         public IEnumerable<EmpEntity> FindBySpecification(System.Linq.Expressions.Expression<Func<EmpEntity, bool>> spec)

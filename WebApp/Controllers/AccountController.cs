@@ -34,7 +34,7 @@ namespace AR2AP.WebApp.Controllers
             if (ModelState.IsValid)
             {
                 AR2AP.Service.EmpService service = new AR2AP.Service.EmpService();
-                var entity = service.GetEmpEntity(model.UserName, model.Password);
+                var entity = service.GetEntity(model.UserName, model.Password);
                 if (entity != null)
                 {
                     AR2AP.WebApp.Authentication.AuthUtility.RegisterTicket(entity);

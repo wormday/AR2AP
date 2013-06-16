@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 06/15/2013 16:48:15
+-- Date Created: 06/16/2013 16:28:49
 -- Generated from EDMX file: D:\Projects\AR2AP\AR2AP.BLL\AR2AP.edmx
 -- --------------------------------------------------
 
@@ -80,14 +80,15 @@ GO
 
 -- Creating table 'AgencyEntities'
 CREATE TABLE [dbo].[AgencyEntities] (
-    [AgencyID] int IDENTITY(1,1) NOT NULL,
-    [Currency] nvarchar(10)  NOT NULL
+    [AgencyID] smallint IDENTITY(1,1) NOT NULL,
+    [AgencyName] nvarchar(max)  NOT NULL,
+    [CurrencyType] tinyint  NOT NULL
 );
 GO
 
 -- Creating table 'ClientEntities'
 CREATE TABLE [dbo].[ClientEntities] (
-    [ClientID] int IDENTITY(1,1) NOT NULL,
+    [ClientID] smallint IDENTITY(1,1) NOT NULL,
     [ClientType] tinyint  NOT NULL,
     [ClientGroup] nvarchar(max)  NOT NULL,
     [ClientName] nvarchar(max)  NOT NULL
@@ -97,9 +98,9 @@ GO
 -- Creating table 'AREntities'
 CREATE TABLE [dbo].[AREntities] (
     [ARID] int IDENTITY(1,1) NOT NULL,
-    [ClientID] int  NOT NULL,
-    [AgencyID] int  NOT NULL,
-    [TermID] nvarchar(10)  NOT NULL,
+    [ClientID] smallint  NOT NULL,
+    [AgencyID] smallint  NOT NULL,
+    [TermID] smallint  NOT NULL,
     [ProjectNo] nvarchar(50)  NOT NULL,
     [ContractNo] nvarchar(50)  NOT NULL,
     [Campaingn] nvarchar(max)  NOT NULL,
@@ -118,7 +119,7 @@ GO
 
 -- Creating table 'TermEntities'
 CREATE TABLE [dbo].[TermEntities] (
-    [TermID] nvarchar(10)  NOT NULL,
+    [TermID] smallint IDENTITY(1,1) NOT NULL,
     [Market] nvarchar(10)  NOT NULL,
     [Depart] nvarchar(10)  NOT NULL
 );
@@ -126,11 +127,11 @@ GO
 
 -- Creating table 'EmpEntities'
 CREATE TABLE [dbo].[EmpEntities] (
-    [EmpID] int IDENTITY(1,1) NOT NULL,
+    [EmpID] smallint IDENTITY(1,1) NOT NULL,
     [EmpName] nvarchar(200)  NOT NULL,
-    [EmpEmail] nvarchar(200)  NULL,
-    [Username] nvarchar(16)  NULL,
-    [Password] nvarchar(16)  NULL
+    [EmpEmail] varchar(200)  NULL,
+    [Username] varchar(16)  NULL,
+    [Password] varchar(32)  NULL
 );
 GO
 
@@ -138,16 +139,16 @@ GO
 CREATE TABLE [dbo].[ARRelatedEmpEntities] (
     [ID] int IDENTITY(1,1) NOT NULL,
     [ARID] int  NOT NULL,
-    [EmpID] int  NOT NULL
+    [EmpID] smallint  NOT NULL
 );
 GO
 
 -- Creating table 'CollectionEntities'
 CREATE TABLE [dbo].[CollectionEntities] (
     [CollectionID] int IDENTITY(1,1) NOT NULL,
-    [ClientID] int  NULL,
+    [ClientID] smallint  NULL,
     [CollectionDate] nvarchar(max)  NOT NULL,
-    [AgencyEntityAgencyID] int  NOT NULL,
+    [AgencyID] smallint  NOT NULL,
     [CollectionAmount] nvarchar(max)  NOT NULL,
     [CollectionRemark] nvarchar(max)  NOT NULL
 );
@@ -304,10 +305,10 @@ ON [dbo].[CollectionEntities]
     ([ClientID]);
 GO
 
--- Creating foreign key on [AgencyEntityAgencyID] in table 'CollectionEntities'
+-- Creating foreign key on [AgencyID] in table 'CollectionEntities'
 ALTER TABLE [dbo].[CollectionEntities]
 ADD CONSTRAINT [FK_CollectionEntityAgencyEntity]
-    FOREIGN KEY ([AgencyEntityAgencyID])
+    FOREIGN KEY ([AgencyID])
     REFERENCES [dbo].[AgencyEntities]
         ([AgencyID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -315,7 +316,7 @@ ADD CONSTRAINT [FK_CollectionEntityAgencyEntity]
 -- Creating non-clustered index for FOREIGN KEY 'FK_CollectionEntityAgencyEntity'
 CREATE INDEX [IX_FK_CollectionEntityAgencyEntity]
 ON [dbo].[CollectionEntities]
-    ([AgencyEntityAgencyID]);
+    ([AgencyID]);
 GO
 
 -- Creating foreign key on [AREntityARID] in table 'WriteOffEntities'

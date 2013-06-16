@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "TermMerge";
+}
+@model AR2AP.WebApp.Models.Foundation.SimpleMergeVModel<AR2AP.BLL.TermEntity>
+@using (Html.BeginForm()) {
+    <fieldset>
+        <legend></legend>
+        <ol>
+            <li>
+                @Html.HiddenFor(m => m.Entity.TermID)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Entity.Depart)
+                @Html.TextBoxFor(m => m.Entity.Depart)
+                @Html.ValidationMessageFor(m => m.Entity.Depart)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Entity.Market)
+                @Html.TextBoxFor(m => m.Entity.Market)
+                @Html.ValidationMessageFor(m => m.Entity.Market)
+            </li>
+        </ol>
+        <input type="submit" value="Save" />
+    </fieldset>
+}

@@ -21,7 +21,7 @@ namespace AR2AP.BLL
             this.Collection = new HashSet<CollectionEntity>();
         }
         /// <summary>客户编号</summary>
-        public int ClientID { get; set; }
+        public short ClientID { get; set; }
         /// <summary>客户类型(直客/代理)</summary>
         public ClientTypeEnum ClientType { get; set; }
         /// <summary>客户所属的集团</summary>

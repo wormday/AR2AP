@@ -19,7 +19,7 @@ namespace AR2AP.BLL
         {
             this.AREntities = new HashSet<AREntity>();
         }
-        public string TermID { get; set; }
+        public short TermID { get; set; }
         public string Market { get; set; }
         public string Depart { get; set; }
     

@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "TermList";
+}
+@model AR2AP.WebApp.Models.Foundation.SimpleListVModel<AR2AP.BLL.TermEntity>
+<table>
+    <tr>
+        <th>TermID</th>
+        <th>Depart</th>
+        <th>Market</th>
+    </tr>
+
+    @foreach (var item in Model.Entities)
+    { 
+        <tr>
+            <td>@item.TermID</td>
+            <td><a href="/Foundation/TermMerge/@item.TermID">@item.Depart</a></td>
+            <td>@item.Market</td>
+        </tr>
+    }
+</table>

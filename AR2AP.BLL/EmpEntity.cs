@@ -20,7 +20,7 @@ namespace AR2AP.BLL
             this.ARRelatedEmpEntities = new HashSet<ARRelatedEmpEntity>();
         }
         /// <summary>员工编号</summary>
-        public int EmpID { get; set; }
+        public short EmpID { get; set; }
         /// <summary>员工姓名</summary>
         public string EmpName { get; set; }
         /// <summary>员工电子邮件</summary>

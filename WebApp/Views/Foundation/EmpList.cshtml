@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "EmpList";
+}
+@model AR2AP.WebApp.Models.Foundation.EmpListVModel
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Password</th>
+    </tr>
+
+    @foreach (var item in Model.EmpEntities)
+    { 
+        <tr>
+            <td>@item.EmpID</td>
+            <td><a href="/Foundation/EmpModify/@item.EmpID">@item.EmpName</a></td>
+            <td>@item.EmpEmail</td>
+            <td>@item.Username</td>
+            <td>@item.Password</td>
+        </tr>
+    }
+</table>

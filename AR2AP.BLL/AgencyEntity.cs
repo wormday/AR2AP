@@ -20,8 +20,9 @@ namespace AR2AP.BLL
             this.AREntities = new HashSet<AREntity>();
             this.CollectionEntities = new HashSet<CollectionEntity>();
         }
-        public int AgencyID { get; set; }
-        public string Currency { get; set; }
+        public short AgencyID { get; set; }
+        public string AgencyName { get; set; }
+        public CurrencyTypeEnum CurrencyType { get; set; }
     
         public virtual ICollection<AREntity> AREntities { get; set; }
         public virtual ICollection<CollectionEntity> CollectionEntities { get; set; }

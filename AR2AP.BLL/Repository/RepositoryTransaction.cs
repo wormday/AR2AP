@@ -34,6 +34,10 @@ namespace AR2AP.BLL.Repository
         {
             return new EmpRepository(_context);
         }
+        public TermRepository GetTermRepository()
+        {
+            return new TermRepository(_context);
+        }
         #endregion
     }
 }

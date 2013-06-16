@@ -20,9 +20,9 @@ namespace AR2AP.BLL
             this.WriteOffEntities = new HashSet<WriteOffEntity>();
         }
         public int CollectionID { get; set; }
-        public Nullable<int> ClientID { get; set; }
+        public Nullable<short> ClientID { get; set; }
         public string CollectionDate { get; set; }
-        public int AgencyEntityAgencyID { get; set; }
+        public short AgencyID { get; set; }
         public string CollectionAmount { get; set; }
         public string CollectionRemark { get; set; }
     

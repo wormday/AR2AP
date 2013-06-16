@@ -55,14 +55,15 @@
     <Key>
       <PropertyRef Name="AgencyID" />
     </Key>
-    <Property Name="AgencyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Currency" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="AgencyID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AgencyName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CurrencyType" Type="tinyint" Nullable="false" />
   </EntityType>
   <EntityType Name="ClientEntities">
     <Key>
       <PropertyRef Name="ClientID" />
     </Key>
-    <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ClientType" Type="tinyint" Nullable="false" />
     <Property Name="ClientGroup" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ClientName" Type="nvarchar(max)" Nullable="false" />
@@ -72,9 +73,9 @@
       <PropertyRef Name="ARID" />
     </Key>
     <Property Name="ARID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ClientID" Type="int" Nullable="false" />
-    <Property Name="AgencyID" Type="int" Nullable="false" />
-    <Property Name="TermID" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="ClientID" Type="smallint" Nullable="false" />
+    <Property Name="AgencyID" Type="smallint" Nullable="false" />
+    <Property Name="TermID" Type="smallint" Nullable="false" />
     <Property Name="ProjectNo" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="ContractNo" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Campaingn" Type="nvarchar(max)" Nullable="false" />
@@ -93,7 +94,7 @@
     <Key>
       <PropertyRef Name="TermID" />
     </Key>
-    <Property Name="TermID" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="TermID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Market" Type="nvarchar" Nullable="false" MaxLength="10" />
     <Property Name="Depart" Type="nvarchar" Nullable="false" MaxLength="10" />
   </EntityType>
@@ -101,11 +102,11 @@
     <Key>
       <PropertyRef Name="EmpID" />
     </Key>
-    <Property Name="EmpID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmpID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="EmpName" Type="nvarchar" Nullable="false" MaxLength="200" />
-    <Property Name="EmpEmail" Type="nvarchar" Nullable="true" MaxLength="200" />
-    <Property Name="Username" Type="nvarchar" Nullable="true" MaxLength="16" />
-    <Property Name="Password" Type="nvarchar" Nullable="true" MaxLength="16" />
+    <Property Name="EmpEmail" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="Username" Type="varchar" Nullable="true" MaxLength="16" />
+    <Property Name="Password" Type="varchar" Nullable="true" MaxLength="32" />
   </EntityType>
   <EntityType Name="ARRelatedEmpEntities">
     <Key>
@@ -113,16 +114,16 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ARID" Type="int" Nullable="false" />
-    <Property Name="EmpID" Type="int" Nullable="false" />
+    <Property Name="EmpID" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="CollectionEntities">
     <Key>
       <PropertyRef Name="CollectionID" />
     </Key>
     <Property Name="CollectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ClientID" Type="int" Nullable="true" />
+    <Property Name="ClientID" Type="smallint" Nullable="true" />
     <Property Name="CollectionDate" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="AgencyEntityAgencyID" Type="int" Nullable="false" />
+    <Property Name="AgencyID" Type="smallint" Nullable="false" />
     <Property Name="CollectionAmount" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CollectionRemark" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
@@ -217,7 +218,7 @@
         <PropertyRef Name="AgencyID" />
       </Principal>
       <Dependent Role="CollectionEntity">
-        <PropertyRef Name="AgencyEntityAgencyID" />
+        <PropertyRef Name="AgencyID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -302,8 +303,9 @@
           <Key>
             <PropertyRef Name="AgencyID" />
           </Key>
-          <Property Type="Int32" Name="AgencyID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Currency" Nullable="false" MaxLength="10" />
+          <Property Type="Int16" Name="AgencyID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="AgencyName" Nullable="false" />
+          <Property Type="AR2AP.CurrencyTypeEnum" Name="CurrencyType" Nullable="false" />
           <NavigationProperty Name="AREntities" Relationship="AR2AP.AgencyEntityAREntity" FromRole="AgencyEntity" ToRole="AREntity" />
           <NavigationProperty Name="CollectionEntities" Relationship="AR2AP.CollectionEntityAgencyEntity" FromRole="AgencyEntity" ToRole="CollectionEntity" />
         </EntityType>
@@ -314,7 +316,7 @@
           <Key>
             <PropertyRef Name="ClientID" />
           </Key>
-          <Property Type="Int32" Name="ClientID" Nullable="false" annotation:StoreGeneratedPattern="Identity" >
+          <Property Type="Int16" Name="ClientID" Nullable="false" annotation:StoreGeneratedPattern="Identity" >
             <Documentation>
               <Summary>客户编号</Summary>
             </Documentation>
@@ -354,15 +356,15 @@
             </Documentation>
           </Property>
           <NavigationProperty Name="ClientEntity" Relationship="AR2AP.AREntityClientEntity" FromRole="AREntity" ToRole="ClientEntity" />
-          <Property Type="Int32" Name="ClientID" Nullable="false" >
+          <Property Type="Int16" Name="ClientID" Nullable="false" >
             <Documentation>
               <Summary>客户编号</Summary>
             </Documentation>
           </Property>
           <NavigationProperty Name="AgencyEntity" Relationship="AR2AP.AgencyEntityAREntity" FromRole="AREntity" ToRole="AgencyEntity" />
-          <Property Type="Int32" Name="AgencyID" Nullable="false" />
+          <Property Type="Int16" Name="AgencyID" Nullable="false" />
           <NavigationProperty Name="TermEntity" Relationship="AR2AP.AREntityTermEntity" FromRole="AREntity" ToRole="TermEntity" />
-          <Property Type="String" Name="TermID" Nullable="false" MaxLength="10" />
+          <Property Type="Int16" Name="TermID" Nullable="false" />
           <Property Type="String" Name="ProjectNo" Nullable="false" MaxLength="50" >
             <Documentation>
               <Summary>项目编号</Summary>
@@ -454,7 +456,7 @@
           <Key>
             <PropertyRef Name="TermID" />
           </Key>
-          <Property Type="String" Name="TermID" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="10" />
+          <Property Type="Int16" Name="TermID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Market" Nullable="false" MaxLength="10" />
           <Property Type="String" Name="Depart" Nullable="false" MaxLength="10" />
           <NavigationProperty Name="AREntities" Relationship="AR2AP.AREntityTermEntity" FromRole="TermEntity" ToRole="AREntity" />
@@ -478,7 +480,7 @@
           <Key>
             <PropertyRef Name="EmpID" />
           </Key>
-          <Property Type="Int32" Name="EmpID" Nullable="false" annotation:StoreGeneratedPattern="Identity" >
+          <Property Type="Int16" Name="EmpID" Nullable="false" annotation:StoreGeneratedPattern="Identity" >
             <Documentation>
               <Summary>员工编号</Summary>
             </Documentation>
@@ -488,18 +490,18 @@
               <Summary>员工姓名</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="EmpEmail" Nullable="true" MaxLength="200" >
+          <Property Type="String" Name="EmpEmail" Nullable="true" MaxLength="200" Unicode="false" >
             <Documentation>
               <Summary>员工电子邮件</Summary>
             </Documentation>
           </Property>
           <NavigationProperty Name="ARRelatedEmpEntities" Relationship="AR2AP.ARRelatedEmpEntityEmpEntity" FromRole="EmpEntity" ToRole="ARRelatedEmpEntity" />
-          <Property Type="String" Name="Username" Nullable="true" MaxLength="16" >
+          <Property Type="String" Name="Username" Nullable="true" MaxLength="16" Unicode="false" >
             <Documentation>
               <Summary>登陆本系统的用户名</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="Password" Nullable="true" MaxLength="16" >
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="32" Unicode="false" >
             <Documentation>
               <Summary>登陆本系统的密码</Summary>
             </Documentation>
@@ -513,7 +515,7 @@
           <NavigationProperty Name="AREntity" Relationship="AR2AP.ARRelatedEmpEntityAREntity" FromRole="ARRelatedEmpEntity" ToRole="AREntity" />
           <Property Type="Int32" Name="ARID" Nullable="false" />
           <NavigationProperty Name="EmpEntity" Relationship="AR2AP.ARRelatedEmpEntityEmpEntity" FromRole="ARRelatedEmpEntity" ToRole="EmpEntity" />
-          <Property Type="Int32" Name="EmpID" Nullable="false" />
+          <Property Type="Int16" Name="EmpID" Nullable="false" />
         </EntityType>
         <Association Name="ARRelatedEmpEntityAREntity">
           <End Type="AR2AP.ARRelatedEmpEntity" Role="ARRelatedEmpEntity" Multiplicity="*" />
@@ -548,10 +550,10 @@
           </Key>
           <Property Type="Int32" Name="CollectionID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="ClientEntity" Relationship="AR2AP.CollectionClientEntity" FromRole="Collection" ToRole="ClientEntity" />
-          <Property Type="Int32" Name="ClientID" Nullable="true" />
+          <Property Type="Int16" Name="ClientID" Nullable="true" />
           <Property Type="String" Name="CollectionDate" Nullable="false" />
           <NavigationProperty Name="AgencyEntity" Relationship="AR2AP.CollectionEntityAgencyEntity" FromRole="CollectionEntity" ToRole="AgencyEntity" />
-          <Property Type="Int32" Name="AgencyEntityAgencyID" Nullable="false" />
+          <Property Type="Int16" Name="AgencyID" Nullable="false" />
           <Property Type="String" Name="CollectionAmount" Nullable="false" />
           <Property Type="String" Name="CollectionRemark" Nullable="false" />
           <NavigationProperty Name="WriteOffEntities" Relationship="AR2AP.WriteOffEntityCollectionEntity" FromRole="CollectionEntity" ToRole="WriteOffEntity" />
@@ -576,7 +578,7 @@
               <PropertyRef Name="AgencyID" />
             </Principal>
             <Dependent Role="CollectionEntity">
-              <PropertyRef Name="AgencyEntityAgencyID" />
+              <PropertyRef Name="AgencyID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -624,6 +626,10 @@
           <Member Name="广告业" Value="1" />
           <Member Name="服务业" Value="2" />
         </EnumType>
+        <EnumType Name="CurrencyTypeEnum" UnderlyingType="Byte">
+          <Member Name="RMB" Value="1" />
+          <Member Name="USD" Value="2" />
+        </EnumType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -634,7 +640,8 @@
       <EntityTypeMapping TypeName="IsTypeOf(AR2AP.AgencyEntity)">
         <MappingFragment StoreEntitySet="AgencyEntities">
           <ScalarProperty Name="AgencyID" ColumnName="AgencyID" />
-          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="AgencyName" ColumnName="AgencyName" />
+          <ScalarProperty Name="CurrencyType" ColumnName="CurrencyType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -706,7 +713,7 @@
           <ScalarProperty Name="CollectionID" ColumnName="CollectionID" />
           <ScalarProperty Name="ClientID" ColumnName="ClientID" />
           <ScalarProperty Name="CollectionDate" ColumnName="CollectionDate" />
-          <ScalarProperty Name="AgencyEntityAgencyID" ColumnName="AgencyEntityAgencyID" />
+          <ScalarProperty Name="AgencyID" ColumnName="AgencyID" />
           <ScalarProperty Name="CollectionAmount" ColumnName="CollectionAmount" />
           <ScalarProperty Name="CollectionRemark" ColumnName="CollectionRemark" />
         </MappingFragment>

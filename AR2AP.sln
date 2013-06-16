@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AR2AP.BLL", "AR2AP.BLL\AR2A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AR2AP.Service", "AR2AP.Service\AR2AP.Service.csproj", "{54D5CCCB-303D-49D7-B616-BA6FD1A2CF79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AR2AP.Utility", "AR2AP.Utility\AR2AP.Utility.csproj", "{E6333DCA-62E0-4950-9464-7716596D9816}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{54D5CCCB-303D-49D7-B616-BA6FD1A2CF79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54D5CCCB-303D-49D7-B616-BA6FD1A2CF79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54D5CCCB-303D-49D7-B616-BA6FD1A2CF79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6333DCA-62E0-4950-9464-7716596D9816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6333DCA-62E0-4950-9464-7716596D9816}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6333DCA-62E0-4950-9464-7716596D9816}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6333DCA-62E0-4950-9464-7716596D9816}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

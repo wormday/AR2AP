@@ -177,11 +177,17 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Authentication\AuthUtility.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FoundationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CurrEmpData.cs" />
+    <Compile Include="Models\Foundation\EmpListVModel.cs" />
+    <Compile Include="Models\Foundation\EmpModifyVModel.cs" />
+    <Compile Include="Models\Foundation\SimpleListVModel.cs" />
+    <Compile Include="Models\Foundation\SimpleMergeVModel.cs" />
+    <Compile Include="Models\Foundation\TermMergeVModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Account\LoginVModel.cs" />
   </ItemGroup>
@@ -278,6 +284,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Foundation\EmpList.cshtml" />
+    <Content Include="Views\Foundation\EmpModify.cshtml" />
+    <Content Include="Views\Foundation\TermList.cshtml" />
+    <Content Include="Views\Foundation\TermMerge.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -294,6 +304,10 @@
     <ProjectReference Include="..\AR2AP.Service\AR2AP.Service.csproj">
       <Project>{54d5cccb-303d-49d7-b616-ba6fd1a2cf79}</Project>
       <Name>AR2AP.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AR2AP.Utility\AR2AP.Utility.csproj">
+      <Project>{e6333dca-62e0-4950-9464-7716596d9816}</Project>
+      <Name>AR2AP.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
