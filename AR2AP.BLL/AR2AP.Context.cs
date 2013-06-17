@@ -28,7 +28,7 @@ namespace AR2AP.BLL
         public DbSet<AgencyEntity> AgencyEntities { get; set; }
         public DbSet<ClientEntity> ClientEntities { get; set; }
         public DbSet<AREntity> AREntities { get; set; }
-        public DbSet<TermEntity> TermEntities { get; set; }
+        public DbSet<TeamEntity> TeamEntities { get; set; }
         public DbSet<EmpEntity> EmpEntities { get; set; }
         public DbSet<ARRelatedEmpEntity> ARRelatedEmpEntities { get; set; }
         public DbSet<CollectionEntity> CollectionEntities { get; set; }

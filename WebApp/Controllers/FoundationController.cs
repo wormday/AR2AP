@@ -64,20 +64,20 @@ namespace AR2AP.WebApp.Controllers
         }
         #endregion
 
-        #region Term
-        public ActionResult TermList()
+        #region Team
+        public ActionResult TeamList()
         {
-            return List<TermEntity,TermService>();
+            return List<TeamEntity,TeamService>();
         }
         [HttpPost]
-        public ActionResult TermMerge(TermMergeVModel vModel)
+        public ActionResult TeamMerge(TeamMergeVModel vModel)
         {
-            return Merge<TermEntity, TermService>(vModel);
+            return Merge<TeamEntity, TeamService>(vModel);
         }
         [HttpGet]
-        public ActionResult TermMerge(int? id)
+        public ActionResult TeamMerge(int? id)
         {
-            return Merge<TermEntity, TermService>(id);
+            return Merge<TeamEntity, TeamService>(id);
         }
         #endregion
 

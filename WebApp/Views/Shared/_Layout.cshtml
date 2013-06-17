@@ -63,5 +63,11 @@
         </div>
     </footer>
     @RenderSection("scripts", required: false)
+    <script>
+        $(function () {
+            $("#leftmenu").menu();
+            $(".buttonset").buttonset();
+        });
+</script>
 </body>
 </html>

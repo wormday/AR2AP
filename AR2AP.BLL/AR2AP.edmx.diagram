@@ -6,11 +6,11 @@
     <edmx:Diagrams>
       <Diagram DiagramId="1dbce360878943e39c8bb735f80b144f" Name="关系图1" >
         <EntityTypeShape EntityType="AR2AP.AgencyEntity" Width="2" PointX="7.75" PointY="0.5" />
-        <EntityTypeShape EntityType="AR2AP.ClientEntity" Width="1.5" PointX="5.625" PointY="2.75" />
+        <EntityTypeShape EntityType="AR2AP.ClientEntity" Width="1.75" PointX="5.625" PointY="2.75" />
         <EntityTypeShape EntityType="AR2AP.AREntity" Width="2.125" PointX="2.875" PointY="0.625" />
         <AssociationConnector Association="AR2AP.AREntityClientEntity" />
         <AssociationConnector Association="AR2AP.AgencyEntityAREntity" />
-        <EntityTypeShape EntityType="AR2AP.TermEntity" Width="1.5" PointX="0.875" PointY="4.5" />
+        <EntityTypeShape EntityType="AR2AP.TeamEntity" Width="1.5" PointX="0.875" PointY="4.5" />
         <AssociationConnector Association="AR2AP.AREntityTermEntity" />
         <EntityTypeShape EntityType="AR2AP.EmpEntity" Width="2" PointX="7.75" PointY="6.25" />
         <EntityTypeShape EntityType="AR2AP.ARRelatedEmpEntity" Width="2.125" PointX="2.875" PointY="6.5" />

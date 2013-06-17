@@ -34,9 +34,9 @@ namespace AR2AP.BLL.Repository
         {
             return new EmpRepository(_context);
         }
-        public TermRepository GetTermRepository()
+        public TeamRepository GetTeamRepository()
         {
-            return new TermRepository(_context);
+            return new TeamRepository(_context);
         }
         public AgencyRepository GetAgencyRepository()
         {

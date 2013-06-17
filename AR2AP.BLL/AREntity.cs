@@ -53,7 +53,7 @@ namespace AR2AP.BLL
     
         public virtual ClientEntity ClientEntity { get; set; }
         public virtual AgencyEntity AgencyEntity { get; set; }
-        public virtual TermEntity TermEntity { get; set; }
+        public virtual TeamEntity TeamEntity { get; set; }
         public virtual ICollection<ARRelatedEmpEntity> ARRelatedEmpEntities { get; set; }
         public virtual ICollection<WriteOffEntity> WriteOffEntities { get; set; }
     }

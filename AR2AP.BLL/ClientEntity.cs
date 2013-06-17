@@ -18,7 +18,7 @@ namespace AR2AP.BLL
         public ClientEntity()
         {
             this.AREntities = new HashSet<AREntity>();
-            this.Collection = new HashSet<CollectionEntity>();
+            this.CollectionEntities = new HashSet<CollectionEntity>();
         }
         /// <summary>客户编号</summary>
         public short ClientID { get; set; }
@@ -30,6 +30,6 @@ namespace AR2AP.BLL
         public string ClientName { get; set; }
     
         public virtual ICollection<AREntity> AREntities { get; set; }
-        public virtual ICollection<CollectionEntity> Collection { get; set; }
+        public virtual ICollection<CollectionEntity> CollectionEntities { get; set; }
     }
 }

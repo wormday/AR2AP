@@ -1,13 +1,18 @@
 ﻿@{
-    ViewBag.Title = "TermMerge";
+    ViewBag.Title = "Team Modify";
 }
-@model AR2AP.WebApp.Models.Foundation.SimpleMergeVModel<AR2AP.BLL.TermEntity>
+@model AR2AP.WebApp.Models.Foundation.SimpleMergeVModel<AR2AP.BLL.TeamEntity>
+@section submenu
+{
+    @Html.Partial("_SubMenuFoundation")
+}
 @using (Html.BeginForm()) {
+    <div style="font-size:1.5em; font-weight:bold; padding:0px; margin:0 0 0 10px;">@ViewBag.Title</div>
     <fieldset>
         <legend></legend>
         <ol>
             <li>
-                @Html.HiddenFor(m => m.Entity.TermID)
+                @Html.HiddenFor(m => m.Entity.TeamID)
             </li>
             <li>
                 @Html.LabelFor(m => m.Entity.Depart)

@@ -393,15 +393,17 @@ aside {
 }
 
 /* forms */
-fieldset {
-    border: none;
-    margin: 0;
-    padding: 0;
+fieldset
+{
+    margin: 1em 0;
+    padding: 0 1em 1em 1em;
+    border: 1px solid #CCC;
 }
 
-    fieldset legend {
-        display: none;
-    }
+legend
+{
+    display:none;
+}
 
     fieldset ol {
         padding: 0;

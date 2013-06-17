@@ -13,13 +13,13 @@ namespace AR2AP.BLL
     using System.Collections.Generic;
     
     /// <summary>业务团队</summary>
-    public partial class TermEntity
+    public partial class TeamEntity
     {
-        public TermEntity()
+        public TeamEntity()
         {
             this.AREntities = new HashSet<AREntity>();
         }
-        public short TermID { get; set; }
+        public short TeamID { get; set; }
         public string Market { get; set; }
         public string Depart { get; set; }
     

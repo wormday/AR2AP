@@ -262,10 +262,10 @@
             <End Role="AREntity" EntitySet="AREntities" />
             <End Role="AgencyEntity" EntitySet="AgencyEntities" />
           </AssociationSet>
-          <EntitySet Name="TermEntities" EntityType="AR2AP.TermEntity" />
+          <EntitySet Name="TeamEntities" EntityType="AR2AP.TeamEntity" />
           <AssociationSet Name="AREntityTermEntity" Association="AR2AP.AREntityTermEntity">
             <End Role="AREntity" EntitySet="AREntities" />
-            <End Role="TermEntity" EntitySet="TermEntities" />
+            <End Role="TermEntity" EntitySet="TeamEntities" />
           </AssociationSet>
           <EntitySet Name="EmpEntities" EntityType="AR2AP.EmpEntity" />
           <EntitySet Name="ARRelatedEmpEntities" EntityType="AR2AP.ARRelatedEmpEntity" />
@@ -337,7 +337,7 @@
             </Documentation>
           </Property>
           <NavigationProperty Name="AREntities" Relationship="AR2AP.AREntityClientEntity" FromRole="ClientEntity" ToRole="AREntity" />
-          <NavigationProperty Name="Collection" Relationship="AR2AP.CollectionClientEntity" FromRole="ClientEntity" ToRole="Collection" />
+          <NavigationProperty Name="CollectionEntities" Relationship="AR2AP.CollectionClientEntity" FromRole="ClientEntity" ToRole="Collection" />
         </EntityType>
         <EnumType Name="ClientTypeEnum" UnderlyingType="Byte" IsFlags="true">
           <Member Name="直客" Value="1" />
@@ -363,7 +363,7 @@
           </Property>
           <NavigationProperty Name="AgencyEntity" Relationship="AR2AP.AgencyEntityAREntity" FromRole="AREntity" ToRole="AgencyEntity" />
           <Property Type="Int16" Name="AgencyID" Nullable="false" />
-          <NavigationProperty Name="TermEntity" Relationship="AR2AP.AREntityTermEntity" FromRole="AREntity" ToRole="TermEntity" />
+          <NavigationProperty Name="TeamEntity" Relationship="AR2AP.AREntityTermEntity" FromRole="AREntity" ToRole="TermEntity" />
           <Property Type="Int16" Name="TermID" Nullable="false" />
           <Property Type="String" Name="ProjectNo" Nullable="false" MaxLength="50" >
             <Documentation>
@@ -449,24 +449,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="TermEntity">
+        <EntityType Name="TeamEntity">
           <Documentation>
             <Summary>业务团队</Summary>
           </Documentation>
           <Key>
-            <PropertyRef Name="TermID" />
+            <PropertyRef Name="TeamID" />
           </Key>
-          <Property Type="Int16" Name="TermID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int16" Name="TeamID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Market" Nullable="false" MaxLength="10" />
           <Property Type="String" Name="Depart" Nullable="false" MaxLength="10" />
           <NavigationProperty Name="AREntities" Relationship="AR2AP.AREntityTermEntity" FromRole="TermEntity" ToRole="AREntity" />
         </EntityType>
         <Association Name="AREntityTermEntity">
           <End Type="AR2AP.AREntity" Role="AREntity" Multiplicity="*" />
-          <End Type="AR2AP.TermEntity" Role="TermEntity" Multiplicity="1" />
+          <End Type="AR2AP.TeamEntity" Role="TermEntity" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="TermEntity">
-              <PropertyRef Name="TermID" />
+              <PropertyRef Name="TeamID" />
             </Principal>
             <Dependent Role="AREntity">
               <PropertyRef Name="TermID" />
@@ -678,10 +678,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TermEntities">
-      <EntityTypeMapping TypeName="IsTypeOf(AR2AP.TermEntity)">
+    <EntitySetMapping Name="TeamEntities">
+      <EntityTypeMapping TypeName="IsTypeOf(AR2AP.TeamEntity)">
         <MappingFragment StoreEntitySet="TermEntities">
-          <ScalarProperty Name="TermID" ColumnName="TermID" />
+          <ScalarProperty Name="TeamID" ColumnName="TermID" />
           <ScalarProperty Name="Market" ColumnName="Market" />
           <ScalarProperty Name="Depart" ColumnName="Depart" />
         </MappingFragment>

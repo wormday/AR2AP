@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Team List";
+}
+@model AR2AP.WebApp.Models.Foundation.SimpleListVModel<AR2AP.BLL.TeamEntity>
+@section submenu
+{
+    @Html.Partial("_SubMenuFoundation")
+}
+<div class="buttonset" style="margin:5px 0px; font-size:10px; font-weight:normal"><a href="/Foundation/TeamMerge">Add New</a></div>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Depart</th>
+        <th>Market</th>
+    </tr>
+
+    @foreach (var item in Model.Entities)
+    { 
+        <tr>
+            <td>@item.TeamID</td>
+            <td><a href="/Foundation/TermMerge/@item.TeamID">@item.Depart</a></td>
+            <td>@item.Market</td>
+        </tr>
+    }
+</table>

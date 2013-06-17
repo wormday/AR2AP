@@ -190,7 +190,7 @@
     <Compile Include="Models\Foundation\EmpMergeVModel.cs" />
     <Compile Include="Models\Foundation\SimpleListVModel.cs" />
     <Compile Include="Models\Foundation\SimpleMergeVModel.cs" />
-    <Compile Include="Models\Foundation\TermMergeVModel.cs" />
+    <Compile Include="Models\Foundation\TeamMergeVModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Account\LoginVModel.cs" />
   </ItemGroup>
@@ -292,12 +292,13 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Foundation\EmpList.cshtml" />
     <Content Include="Views\Foundation\EmpMerge.cshtml" />
-    <Content Include="Views\Foundation\TermList.cshtml" />
-    <Content Include="Views\Foundation\TermMerge.cshtml" />
+    <Content Include="Views\Foundation\TeamList.cshtml" />
+    <Content Include="Views\Foundation\TeamMerge.cshtml" />
     <Content Include="Views\Foundation\AgencyList.cshtml" />
     <Content Include="Views\Foundation\AgencyMerge.cshtml" />
     <Content Include="Views\Foundation\ClientList.cshtml" />
     <Content Include="Views\Foundation\ClientMerge.cshtml" />
+    <Content Include="Views\Shared\_SubMenuFoundation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

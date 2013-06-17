@@ -1,8 +1,13 @@
 ﻿@{
-    ViewBag.Title = "AgencyMerge";
+    ViewBag.Title = "Client Modify";
 }
 @model AR2AP.WebApp.Models.Foundation.SimpleMergeVModel<AR2AP.BLL.ClientEntity>
+@section submenu
+{
+    @Html.Partial("_SubMenuFoundation")
+}
 @using (Html.BeginForm()) {
+    <div style="font-size:1.5em; font-weight:bold; padding:0px; margin:0 0 0 10px;">@ViewBag.Title</div>
     <fieldset>
         <legend></legend>
         <ol>

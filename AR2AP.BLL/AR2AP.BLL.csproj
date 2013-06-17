@@ -98,8 +98,8 @@
     <Compile Include="Repository\EmpRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\RepositoryTransaction.cs" />
-    <Compile Include="Repository\TermRepository.cs" />
-    <Compile Include="TermEntity.cs">
+    <Compile Include="Repository\TeamRepository.cs" />
+    <Compile Include="TeamEntity.cs">
       <DependentUpon>AR2AP.tt</DependentUpon>
     </Compile>
     <Compile Include="WriteOffEntity.cs">

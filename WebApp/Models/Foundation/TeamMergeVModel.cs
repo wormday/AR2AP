@@ -6,7 +6,7 @@ using AR2AP.BLL;
 
 namespace AR2AP.WebApp.Models.Foundation
 {
-    public class TermMergeVModel:SimpleMergeVModel<TermEntity>
+    public class TeamMergeVModel:SimpleMergeVModel<TeamEntity>
     {
     }
 }
