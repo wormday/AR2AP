@@ -22,7 +22,7 @@ namespace AR2AP.BLL
         }
         public short AgencyID { get; set; }
         public string AgencyName { get; set; }
-        public CurrencyTypeEnum CurrencyType { get; set; }
+        public byte CurrencyType { get; set; }
     
         public virtual ICollection<AREntity> AREntities { get; set; }
         public virtual ICollection<CollectionEntity> CollectionEntities { get; set; }

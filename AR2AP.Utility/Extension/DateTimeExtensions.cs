@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MDSys.Utility
+namespace AR2AP.Utility
 {
     public static class  DateTimeExtensions
     {

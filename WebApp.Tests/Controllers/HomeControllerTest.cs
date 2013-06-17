@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WebApp;
-using WebApp.Controllers;
+using AR2AP;
+using AR2AP.WebApp.Controllers;
 
-namespace WebApp.Tests.Controllers
+namespace AR2AP.WebApp.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest
@@ -16,6 +16,7 @@ namespace WebApp.Tests.Controllers
         public void Index()
         {
             // Arrange
+            
             HomeController controller = new HomeController();
 
             // Act

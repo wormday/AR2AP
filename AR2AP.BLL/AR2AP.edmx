@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="AR2AP.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AR2AP.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="AR2APStoreContainer">
     <EntitySet Name="AgencyEntities" EntityType="AR2AP.Store.AgencyEntities" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ClientEntities" EntityType="AR2AP.Store.ClientEntities" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="AREntities" EntityType="AR2AP.Store.AREntities" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TermEntities" EntityType="AR2AP.Store.TermEntities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TeamEntities" EntityType="AR2AP.Store.TeamEntities" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="EmpEntities" EntityType="AR2AP.Store.EmpEntities" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ARRelatedEmpEntities" EntityType="AR2AP.Store.ARRelatedEmpEntities" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CollectionEntities" EntityType="AR2AP.Store.CollectionEntities" store:Type="Tables" Schema="dbo" />
@@ -24,7 +24,7 @@
     </AssociationSet>
     <AssociationSet Name="AREntityTermEntity" Association="AR2AP.Store.AREntityTermEntity">
       <End Role="AREntity" EntitySet="AREntities" />
-      <End Role="TermEntity" EntitySet="TermEntities" />
+      <End Role="TermEntity" EntitySet="TeamEntities" />
     </AssociationSet>
     <AssociationSet Name="ARRelatedEmpEntityAREntity" Association="AR2AP.Store.ARRelatedEmpEntityAREntity">
       <End Role="ARRelatedEmpEntity" EntitySet="ARRelatedEmpEntities" />
@@ -90,11 +90,11 @@
     <Property Name="RevenueConfirmationDate" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Remark" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="TermEntities">
+  <EntityType Name="TeamEntities">
     <Key>
-      <PropertyRef Name="TermID" />
+      <PropertyRef Name="TeamID" />
     </Key>
-    <Property Name="TermID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TeamID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Market" Type="nvarchar" Nullable="false" MaxLength="10" />
     <Property Name="Depart" Type="nvarchar" Nullable="false" MaxLength="10" />
   </EntityType>
@@ -164,10 +164,10 @@
   </Association>
   <Association Name="AREntityTermEntity">
     <End Role="AREntity" Type="AR2AP.Store.AREntities" Multiplicity="*" />
-    <End Role="TermEntity" Type="AR2AP.Store.TermEntities" Multiplicity="1" />
+    <End Role="TermEntity" Type="AR2AP.Store.TeamEntities" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="TermEntity">
-        <PropertyRef Name="TermID" />
+        <PropertyRef Name="TeamID" />
       </Principal>
       <Dependent Role="AREntity">
         <PropertyRef Name="TermID" />
@@ -249,7 +249,7 @@
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="AR2AP" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+      <Schema Namespace="AR2AP" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityContainer Name="AR2APContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AgencyEntities" EntityType="AR2AP.AgencyEntity" />
           <EntitySet Name="ClientEntities" EntityType="AR2AP.ClientEntity" />
@@ -305,7 +305,7 @@
           </Key>
           <Property Type="Int16" Name="AgencyID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="AgencyName" Nullable="false" />
-          <Property Type="AR2AP.CurrencyTypeEnum" Name="CurrencyType" Nullable="false" />
+          <Property Type="Byte" Name="CurrencyType" Nullable="false" />
           <NavigationProperty Name="AREntities" Relationship="AR2AP.AgencyEntityAREntity" FromRole="AgencyEntity" ToRole="AREntity" />
           <NavigationProperty Name="CollectionEntities" Relationship="AR2AP.CollectionEntityAgencyEntity" FromRole="AgencyEntity" ToRole="CollectionEntity" />
         </EntityType>
@@ -316,22 +316,22 @@
           <Key>
             <PropertyRef Name="ClientID" />
           </Key>
-          <Property Type="Int16" Name="ClientID" Nullable="false" annotation:StoreGeneratedPattern="Identity" >
+          <Property Type="Int16" Name="ClientID" Nullable="false" annotation:StoreGeneratedPattern="Identity">
             <Documentation>
               <Summary>客户编号</Summary>
             </Documentation>
           </Property>
-          <Property Type="AR2AP.ClientTypeEnum" Name="ClientType" Nullable="false" >
+          <Property Type="Byte" Name="ClientType" Nullable="false">
             <Documentation>
               <Summary>客户类型(直客/代理)</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="ClientGroup" Nullable="false" >
+          <Property Type="String" Name="ClientGroup" Nullable="false">
             <Documentation>
               <Summary>客户所属的集团</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="ClientName" Nullable="false" >
+          <Property Type="String" Name="ClientName" Nullable="false">
             <Documentation>
               <Summary>客户名称</Summary>
             </Documentation>
@@ -339,10 +339,6 @@
           <NavigationProperty Name="AREntities" Relationship="AR2AP.AREntityClientEntity" FromRole="ClientEntity" ToRole="AREntity" />
           <NavigationProperty Name="CollectionEntities" Relationship="AR2AP.CollectionClientEntity" FromRole="ClientEntity" ToRole="Collection" />
         </EntityType>
-        <EnumType Name="ClientTypeEnum" UnderlyingType="Byte" IsFlags="true">
-          <Member Name="直客" Value="1" />
-          <Member Name="代理" Value="2" />
-        </EnumType>
         <EntityType Name="AREntity">
           <Documentation>
             <Summary>应收账款(AR)实体</Summary>
@@ -350,13 +346,13 @@
           <Key>
             <PropertyRef Name="ARID" />
           </Key>
-          <Property Type="Int32" Name="ARID" Nullable="false" annotation:StoreGeneratedPattern="Identity" >
+          <Property Type="Int32" Name="ARID" Nullable="false" annotation:StoreGeneratedPattern="Identity">
             <Documentation>
               <Summary>AR编号</Summary>
             </Documentation>
           </Property>
           <NavigationProperty Name="ClientEntity" Relationship="AR2AP.AREntityClientEntity" FromRole="AREntity" ToRole="ClientEntity" />
-          <Property Type="Int16" Name="ClientID" Nullable="false" >
+          <Property Type="Int16" Name="ClientID" Nullable="false">
             <Documentation>
               <Summary>客户编号</Summary>
             </Documentation>
@@ -365,59 +361,59 @@
           <Property Type="Int16" Name="AgencyID" Nullable="false" />
           <NavigationProperty Name="TeamEntity" Relationship="AR2AP.AREntityTermEntity" FromRole="AREntity" ToRole="TermEntity" />
           <Property Type="Int16" Name="TermID" Nullable="false" />
-          <Property Type="String" Name="ProjectNo" Nullable="false" MaxLength="50" >
+          <Property Type="String" Name="ProjectNo" Nullable="false" MaxLength="50">
             <Documentation>
               <Summary>项目编号</Summary>
             </Documentation>
           </Property>
           <NavigationProperty Name="ARRelatedEmpEntities" Relationship="AR2AP.ARRelatedEmpEntityAREntity" FromRole="AREntity" ToRole="ARRelatedEmpEntity" />
-          <Property Type="String" Name="ContractNo" Nullable="false" MaxLength="50" >
+          <Property Type="String" Name="ContractNo" Nullable="false" MaxLength="50">
             <Documentation>
               <Summary>合同编号</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="Campaingn" Nullable="false" >
+          <Property Type="String" Name="Campaingn" Nullable="false">
             <Documentation>
               <Summary>项目</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="CompaignStart" Nullable="false" >
+          <Property Type="String" Name="CompaignStart" Nullable="false">
             <Documentation>
               <Summary>项目开始日期</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="CompaignEnd" Nullable="false" >
+          <Property Type="String" Name="CompaignEnd" Nullable="false">
             <Documentation>
               <Summary>项目结束日期</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="CompaignAmount" Nullable="false" >
+          <Property Type="String" Name="CompaignAmount" Nullable="false">
             <Documentation>
               <Summary>项目金额</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="DueDate" Nullable="false" >
+          <Property Type="String" Name="DueDate" Nullable="false">
             <Documentation>
               <Summary>收款到期日</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="InvoiceNo" Nullable="false" >
+          <Property Type="String" Name="InvoiceNo" Nullable="false">
             <Documentation>
               <Summary>发票号码</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="InvoiceDate" Nullable="false" >
+          <Property Type="String" Name="InvoiceDate" Nullable="false">
             <Documentation>
               <Summary>开票时间</Summary>
             </Documentation>
           </Property>
-          <Property Type="AR2AP.InvoiceTypeEnum" Name="InvoiceType" Nullable="false" />
-          <Property Type="String" Name="InvoiceAmount" Nullable="false" >
+          <Property Type="Byte" Name="InvoiceType" Nullable="false" />
+          <Property Type="String" Name="InvoiceAmount" Nullable="false">
             <Documentation>
               <Summary>发票金额</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="RevenueConfirmationDate" Nullable="false" >
+          <Property Type="String" Name="RevenueConfirmationDate" Nullable="false">
             <Documentation>
               <Summary>应收确认时间</Summary>
             </Documentation>
@@ -480,28 +476,28 @@
           <Key>
             <PropertyRef Name="EmpID" />
           </Key>
-          <Property Type="Int16" Name="EmpID" Nullable="false" annotation:StoreGeneratedPattern="Identity" >
+          <Property Type="Int16" Name="EmpID" Nullable="false" annotation:StoreGeneratedPattern="Identity">
             <Documentation>
               <Summary>员工编号</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="EmpName" Nullable="false" MaxLength="200" >
+          <Property Type="String" Name="EmpName" Nullable="false" MaxLength="200">
             <Documentation>
               <Summary>员工姓名</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="EmpEmail" Nullable="true" MaxLength="200" Unicode="false" >
+          <Property Type="String" Name="EmpEmail" Nullable="true" MaxLength="200" Unicode="false">
             <Documentation>
               <Summary>员工电子邮件</Summary>
             </Documentation>
           </Property>
           <NavigationProperty Name="ARRelatedEmpEntities" Relationship="AR2AP.ARRelatedEmpEntityEmpEntity" FromRole="EmpEntity" ToRole="ARRelatedEmpEntity" />
-          <Property Type="String" Name="Username" Nullable="true" MaxLength="16" Unicode="false" >
+          <Property Type="String" Name="Username" Nullable="true" MaxLength="16" Unicode="false">
             <Documentation>
               <Summary>登陆本系统的用户名</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="Password" Nullable="true" MaxLength="32" Unicode="false" >
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="32" Unicode="false">
             <Documentation>
               <Summary>登陆本系统的密码</Summary>
             </Documentation>
@@ -622,19 +618,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EnumType Name="InvoiceTypeEnum" UnderlyingType="Byte" IsFlags="true">
-          <Member Name="广告业" Value="1" />
-          <Member Name="服务业" Value="2" />
-        </EnumType>
-        <EnumType Name="CurrencyTypeEnum" UnderlyingType="Byte">
-          <Member Name="RMB" Value="1" />
-          <Member Name="USD" Value="2" />
-        </EnumType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="AR2APStoreContainer" CdmEntityContainer="AR2APContainer">
     <EntitySetMapping Name="AgencyEntities">
       <EntityTypeMapping TypeName="IsTypeOf(AR2AP.AgencyEntity)">
@@ -680,8 +668,8 @@
     </EntitySetMapping>
     <EntitySetMapping Name="TeamEntities">
       <EntityTypeMapping TypeName="IsTypeOf(AR2AP.TeamEntity)">
-        <MappingFragment StoreEntitySet="TermEntities">
-          <ScalarProperty Name="TeamID" ColumnName="TermID" />
+        <MappingFragment StoreEntitySet="TeamEntities">
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
           <ScalarProperty Name="Market" ColumnName="Market" />
           <ScalarProperty Name="Depart" ColumnName="Depart" />
         </MappingFragment>
@@ -735,14 +723,14 @@
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <edmx:Designer>
     <edmx:Connection>
-      <DesignerInfoPropertySet>
+      <DesignerInfoPropertySet xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
       </DesignerInfoPropertySet>
     </edmx:Connection>
     <edmx:Options>
-      <DesignerInfoPropertySet>
+      <DesignerInfoPropertySet xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="无" />

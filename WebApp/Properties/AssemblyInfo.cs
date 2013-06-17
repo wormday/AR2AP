@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过下列特性集
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("WebApp")]
+[assembly: AssemblyTitle("WebApp3")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WebApp")]
+[assembly: AssemblyProduct("WebApp3")]
 [assembly: AssemblyCopyright("版权所有(C)  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("f531e61c-6f7e-4f97-8a6b-d9f9416c0b0c")]
+[assembly: Guid("1665bc88-3bd6-4949-b169-07286839c0e9")]
 
 // 程序集的版本信息由下列四个值组成:
 //

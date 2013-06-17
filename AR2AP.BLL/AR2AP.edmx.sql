@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 06/16/2013 16:28:49
--- Generated from EDMX file: D:\Projects\AR2AP\AR2AP.BLL\AR2AP.edmx
+-- Date Created: 06/18/2013 07:13:36
+-- Generated from EDMX file: C:\Projects\AR2AP\AR2AP.BLL\AR2AP.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -117,9 +117,9 @@ CREATE TABLE [dbo].[AREntities] (
 );
 GO
 
--- Creating table 'TermEntities'
-CREATE TABLE [dbo].[TermEntities] (
-    [TermID] smallint IDENTITY(1,1) NOT NULL,
+-- Creating table 'TeamEntities'
+CREATE TABLE [dbo].[TeamEntities] (
+    [TeamID] smallint IDENTITY(1,1) NOT NULL,
     [Market] nvarchar(10)  NOT NULL,
     [Depart] nvarchar(10)  NOT NULL
 );
@@ -187,10 +187,10 @@ ADD CONSTRAINT [PK_AREntities]
     PRIMARY KEY CLUSTERED ([ARID] ASC);
 GO
 
--- Creating primary key on [TermID] in table 'TermEntities'
-ALTER TABLE [dbo].[TermEntities]
-ADD CONSTRAINT [PK_TermEntities]
-    PRIMARY KEY CLUSTERED ([TermID] ASC);
+-- Creating primary key on [TeamID] in table 'TeamEntities'
+ALTER TABLE [dbo].[TeamEntities]
+ADD CONSTRAINT [PK_TeamEntities]
+    PRIMARY KEY CLUSTERED ([TeamID] ASC);
 GO
 
 -- Creating primary key on [EmpID] in table 'EmpEntities'
@@ -253,8 +253,8 @@ GO
 ALTER TABLE [dbo].[AREntities]
 ADD CONSTRAINT [FK_AREntityTermEntity]
     FOREIGN KEY ([TermID])
-    REFERENCES [dbo].[TermEntities]
-        ([TermID])
+    REFERENCES [dbo].[TeamEntities]
+        ([TeamID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_AREntityTermEntity'

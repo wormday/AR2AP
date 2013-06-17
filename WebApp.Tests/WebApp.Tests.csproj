@@ -11,7 +11,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AR2AP.WebApp.Tests</RootNamespace>
     <AssemblyName>AR2AP.WebApp.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkProfile />
@@ -127,7 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebApp\WebApp.csproj">
-      <Project>{13D33786-8FD4-4230-8BC8-1C03DA686402}</Project>
+      <Project>{4887e441-ca4a-4a09-9abc-9acdf71f00ff}</Project>
       <Name>WebApp</Name>
     </ProjectReference>
   </ItemGroup>

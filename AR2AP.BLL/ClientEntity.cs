@@ -23,7 +23,7 @@ namespace AR2AP.BLL
         /// <summary>客户编号</summary>
         public short ClientID { get; set; }
         /// <summary>客户类型(直客/代理)</summary>
-        public ClientTypeEnum ClientType { get; set; }
+        public byte ClientType { get; set; }
         /// <summary>客户所属的集团</summary>
         public string ClientGroup { get; set; }
         /// <summary>客户名称</summary>

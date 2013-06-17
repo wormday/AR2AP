@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AR2AP.BLL</RootNamespace>
     <AssemblyName>AR2AP.BLL</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -33,9 +33,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -77,19 +77,10 @@
     <Compile Include="ClientEntity.cs">
       <DependentUpon>AR2AP.tt</DependentUpon>
     </Compile>
-    <Compile Include="ClientTypeEnum.cs">
-      <DependentUpon>AR2AP.tt</DependentUpon>
-    </Compile>
     <Compile Include="CollectionEntity.cs">
       <DependentUpon>AR2AP.tt</DependentUpon>
     </Compile>
-    <Compile Include="CurrencyTypeEnum.cs">
-      <DependentUpon>AR2AP.tt</DependentUpon>
-    </Compile>
     <Compile Include="EmpEntity.cs">
-      <DependentUpon>AR2AP.tt</DependentUpon>
-    </Compile>
-    <Compile Include="InvoiceTypeEnum.cs">
       <DependentUpon>AR2AP.tt</DependentUpon>
     </Compile>
     <Compile Include="Partial\AgencyEntity.partial.cs" />

@@ -44,7 +44,7 @@ namespace AR2AP.BLL
         public string InvoiceNo { get; set; }
         /// <summary>开票时间</summary>
         public string InvoiceDate { get; set; }
-        public InvoiceTypeEnum InvoiceType { get; set; }
+        public byte InvoiceType { get; set; }
         /// <summary>发票金额</summary>
         public string InvoiceAmount { get; set; }
         /// <summary>应收确认时间</summary>
