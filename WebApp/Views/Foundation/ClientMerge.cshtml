@@ -1,6 +1,8 @@
 ﻿@{
     ViewBag.Title = "Client Modify";
 }
+@using AR2AP.WebApp.Common.HtmlHelper
+@using AR2AP.BLL
 @model AR2AP.WebApp.Models.Foundation.SimpleMergeVModel<AR2AP.BLL.ClientEntity>
 @section submenu
 {
@@ -13,6 +15,7 @@
         <ol>
             <li>
                 @Html.HiddenFor(m => m.Entity.ClientID)
+                @Html.HiddenFor(m => m.Url)
             </li>
             <li>
                 @Html.LabelFor(m => m.Entity.ClientName)
@@ -26,10 +29,13 @@
             </li>
             <li>
                 @Html.LabelFor(m => m.Entity.ClientType)
-                @Html.TextBoxFor(m => m.Entity.ClientType)
+                @Html.EnumDropDownListFor(m=>m.Entity.ClientType,ClientTypeEnum.代理)
                 @Html.ValidationMessageFor(m => m.Entity.ClientType)
             </li>
         </ol>
         <input type="submit" value="Save" />
     </fieldset>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }

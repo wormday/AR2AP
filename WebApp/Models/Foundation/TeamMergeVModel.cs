@@ -8,5 +8,6 @@ namespace AR2AP.WebApp.Models.Foundation
 {
     public class TeamMergeVModel:SimpleMergeVModel<TeamEntity>
     {
+
     }
 }

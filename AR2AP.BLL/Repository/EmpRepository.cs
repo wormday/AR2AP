@@ -16,7 +16,7 @@ namespace AR2AP.BLL.Repository
 
         public void Add(EmpEntity entity)
         {
-            throw new NotImplementedException();
+            _context.EmpEntities.Add(entity);
         }
 
         public EmpEntity GetByKey(int id)

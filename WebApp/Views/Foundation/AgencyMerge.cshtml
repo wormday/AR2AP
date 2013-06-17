@@ -9,11 +9,13 @@
 }
 @using (Html.BeginForm()) {
     <div style="font-size:1.5em; font-weight:bold; padding:0px; margin:0 0 0 10px;">@ViewBag.Title</div>
+    @Html.ValidationSummary(true)
     <fieldset class="ui-corner-all">
         <legend>111</legend>
         <ol>
             <li>
                 @Html.HiddenFor(m => m.Entity.AgencyID)
+                @Html.HiddenFor(m => m.Url)
             </li>
             <li>
                 @Html.LabelFor(m => m.Entity.AgencyName)
@@ -28,4 +30,7 @@
         </ol>
         <input type="submit" value="Save" />
     </fieldset>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }

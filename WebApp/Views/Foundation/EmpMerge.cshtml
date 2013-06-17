@@ -13,14 +13,15 @@
         <ol>
             <li>
                 @Html.HiddenFor(m => m.Entity.EmpID)
+                @Html.HiddenFor(m => m.Url)
             </li>
             <li>
-                @Html.LabelFor(m => m.Entity.EmpName)
+                <label>Name</label>
                 @Html.TextBoxFor(m => m.Entity.EmpName)
                 @Html.ValidationMessageFor(m => m.Entity.EmpName)
             </li>
             <li>
-                @Html.LabelFor(m => m.Entity.EmpEmail)
+                <label>Email</label>
                 @Html.TextBoxFor(m => m.Entity.EmpEmail)
                 @Html.ValidationMessageFor(m => m.Entity.EmpEmail)
             </li>
@@ -37,4 +38,7 @@
         </ol>
         <input type="submit" value="Save" />
     </fieldset>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }

@@ -13,6 +13,7 @@
         <ol>
             <li>
                 @Html.HiddenFor(m => m.Entity.TeamID)
+                @Html.HiddenFor(m => m.Url)
             </li>
             <li>
                 @Html.LabelFor(m => m.Entity.Depart)
@@ -27,4 +28,7 @@
         </ol>
         <input type="submit" value="Save" />
     </fieldset>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }

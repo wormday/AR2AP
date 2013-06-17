@@ -92,7 +92,7 @@ namespace AR2AP.Service
         private void TrimFields(EmpEntity entity)
         {
             entity.EmpName = entity.EmpName.TrimString();
-            entity.EmpEmail = entity.EmpEmail.TrimString().ToLower();
+            entity.EmpEmail = entity.EmpEmail.TrimString();
             if (!entity.Username.IsNullOrWhiteSpace())
             {
                 entity.Username = entity.Username.TrimString().ToLower();

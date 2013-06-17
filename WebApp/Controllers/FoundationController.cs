@@ -22,26 +22,35 @@ namespace AR2AP.WebApp.Controllers
             where TEntity : class
             where KService : ISimpleService<TEntity>, new()
         {
-            try
+            if (ModelState.IsValid)
             {
-                var service = new KService();
-                service.Merge(vModel.Entity);
-            }
-            catch (ApplicationException ex)
-            {
-                ModelState.AddModelError("EmpEntity.Username", ex.Message);
+                try
+                {
+                    var service = new KService();
+                    service.Merge(vModel.Entity);
+                    return Redirect(vModel.Url);
+                }
+                catch (ApplicationException ex)
+                {
+                    ModelState.AddModelError("EmpEntity.Username", ex.Message);
+                }
             }
             return View(vModel);
         }
         private ActionResult Merge<TEntity, KService>(int? key)
-            where TEntity : class
+            where TEntity : class,new()
             where KService : ISimpleService<TEntity>, new()
         {
             SimpleMergeVModel<TEntity> vModel = new SimpleMergeVModel<TEntity>();
+            vModel.Url = Request.UrlReferrer.ToString();
             if (key.HasValue)
             {
                 var service = new KService();
                 vModel.Entity = service.GetEntity(key.Value);
+            }
+            else
+            {
+                vModel.Entity = new TEntity();
             }
             return View(vModel);
         }
@@ -58,7 +67,7 @@ namespace AR2AP.WebApp.Controllers
             return Merge<EmpEntity, EmpService>(vModel);
         }
         [HttpGet]
-        public ActionResult EmpMerge(int id)
+        public ActionResult EmpMerge(int? id)
         {
             return Merge<EmpEntity, EmpService>(id);
         }

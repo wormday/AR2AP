@@ -38,6 +38,7 @@
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -91,7 +92,10 @@
     <Compile Include="InvoiceTypeEnum.cs">
       <DependentUpon>AR2AP.tt</DependentUpon>
     </Compile>
+    <Compile Include="Partial\AgencyEntity.partial.cs" />
+    <Compile Include="Partial\ClientEntity.partial.cs" />
     <Compile Include="Partial\EmpEntity.partial.cs" />
+    <Compile Include="Partial\TeamEntity.partial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AgencyRepository.cs" />
     <Compile Include="Repository\ClientRepository.cs" />

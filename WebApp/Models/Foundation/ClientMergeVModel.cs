@@ -8,5 +8,6 @@ namespace AR2AP.WebApp.Models.Foundation
 {
     public class ClientMergeVModel : SimpleMergeVModel<ClientEntity>
     {
+
     }
 }
