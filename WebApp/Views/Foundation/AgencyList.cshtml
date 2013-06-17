@@ -4,11 +4,11 @@
 @model AR2AP.WebApp.Models.Foundation.SimpleListVModel<AR2AP.BLL.AgencyEntity>
 @section submenu
 {
-    <div style=" font-size: 1.2em;
-    text-align: left;
+    <div style=" font-size: 1.5em;
+    text-align: center;
     padding: 0.5em 2em 0.5em 1em;
-	background-color:#e2e2e2; margin-bottom:10px;" class="ui-corner-all">
-        Padddd kkk
+	background-color:#e2e2e2; margin-bottom:10px; font-weight:bold" class="ui-state-highlight ui-corner-all">
+        Foundation
     </div>
     <ul id="leftmenu">
         <li><a href="#">Employee</a></li>
@@ -17,7 +17,7 @@
         <li><a href="#">Team</a></li>
     </ul>
 }
-
+<div class="buttonset" style="margin:5px 0px; font-size:10px; font-weight:normal"><a>Add New Agency</a></div>
 <table>
     <tr>
         <th>ID</th>
@@ -37,5 +37,6 @@
 <script>
     $(function () {
         $("#leftmenu").menu();
+        $(".buttonset").buttonset();
     });
 </script>

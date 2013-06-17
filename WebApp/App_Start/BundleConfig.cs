@@ -25,8 +25,8 @@ namespace AR2AP.WebApp
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
-            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
-                        "~/Content/themes/base/jquery.ui.all.css"));
+            bundles.Add(new StyleBundle("~/Content/themes/sunny/css").Include(
+                        "~/Content/themes/sunny/jquery-ui-1.10.3.custom.css"));
         }
     }
 }
