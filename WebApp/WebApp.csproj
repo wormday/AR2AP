@@ -190,12 +190,15 @@
     <Compile Include="Common\HtmlHelper\DropDownListExtensions.cs" />
     <Compile Include="Common\HtmlHelper\EnumExtensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ARController.cs" />
     <Compile Include="Controllers\FoundationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account\LoginVModel.cs" />
+    <Compile Include="Models\AR\AddVModel.cs" />
+    <Compile Include="Models\AR\ListVModel.cs" />
     <Compile Include="Models\CurrEmpData.cs" />
     <Compile Include="Models\Foundation\AgencyMergeVModel.cs" />
     <Compile Include="Models\Foundation\ClientMergeVModel.cs" />
@@ -321,6 +324,9 @@
     <Content Include="Views\Foundation\TeamList.cshtml" />
     <Content Include="Views\Foundation\TeamMerge.cshtml" />
     <Content Include="Views\Shared\_SubMenuFoundation.cshtml" />
+    <Content Include="Views\Shared\_SubMenuAR.cshtml" />
+    <Content Include="Views\AR\List.cshtml" />
+    <Content Include="Views\AR\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "AR Add";
+}
+@model AR2AP.WebApp.Models.AR.AddVModel
+@section submenu
+{
+    @Html.Partial("_SubMenuAR")
+}
+@using (Html.BeginForm()) {
+    <div style="font-size:1.5em; font-weight:bold; padding:0px; margin:0 0 0 10px;">@ViewBag.Title</div>
+    @Html.ValidationSummary(true)
+    <fieldset class="ui-corner-all">
+        <legend>111</legend>
+        <ol>
+            <li>
+                @Html.HiddenFor(m => m.AREntity.ARID)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AREntity.TermID)
+                @Html.TextBoxFor(m => m.AREntity.TermID)
+                @Html.ValidationMessageFor(m => m.AREntity.TermID)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AREntity.AgencyID)
+                @Html.TextBoxFor(m=>m.AREntity.AgencyID)
+                @Html.ValidationMessageFor(m=>m.AREntity.AgencyID)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AREntity.Campaingn)
+                @Html.TextBoxFor(m=>m.AREntity.Campaingn)
+                @Html.ValidationMessageFor(m=>m.AREntity.Campaingn)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AREntity.ClientID)
+                @Html.TextBoxFor(m=>m.AREntity.ClientID)
+                @Html.ValidationMessageFor(m=>m.AREntity.ClientID)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AREntity.CompaignAmount)
+                @Html.TextBoxFor(m=>m.AREntity.CompaignAmount)
+                @Html.ValidationMessageFor(m=>m.AREntity.CompaignAmount)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AREntity.CompaignStart)
+                @Html.TextBoxFor(m=>m.AREntity.CompaignStart)
+                @Html.ValidationMessageFor(m=>m.AREntity.CompaignStart)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AREntity.CompaignEnd)
+                @Html.TextBoxFor(m=>m.AREntity.CompaignEnd)
+                @Html.ValidationMessageFor(m=>m.AREntity.CompaignEnd)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AREntity.ContractNo)
+                @Html.TextBoxFor(m=>m.AREntity.ContractNo)
+                @Html.ValidationMessageFor(m=>m.AREntity.ContractNo)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AREntity.DueDate)
+                @Html.TextBoxFor(m=>m.AREntity.DueDate)
+                @Html.ValidationMessageFor(m=>m.AREntity.DueDate)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AREntity.InvoiceAmount)
+                @Html.TextBoxFor(m=>m.AREntity.InvoiceAmount)
+                @Html.ValidationMessageFor(m=>m.AREntity.InvoiceAmount)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AREntity.InvoiceDate)
+                @Html.TextBoxFor(m=>m.AREntity.InvoiceDate)
+                @Html.ValidationMessageFor(m=>m.AREntity.InvoiceDate)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AREntity.InvoiceNo)
+                @Html.TextBoxFor(m=>m.AREntity.InvoiceNo)
+                @Html.ValidationMessageFor(m=>m.AREntity.InvoiceNo)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AREntity.InvoiceType)
+                @Html.TextBoxFor(m=>m.AREntity.InvoiceType)
+                @Html.ValidationMessageFor(m=>m.AREntity.InvoiceType)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AREntity.ProjectNo)
+                @Html.TextBoxFor(m=>m.AREntity.ProjectNo)
+                @Html.ValidationMessageFor(m=>m.AREntity.ProjectNo)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AREntity.Remark)
+                @Html.TextBoxFor(m=>m.AREntity.Remark)
+                @Html.ValidationMessageFor(m=>m.AREntity.Remark)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AREntity.RevenueConfirmationDate)
+                @Html.TextBoxFor(m=>m.AREntity.RevenueConfirmationDate)
+                @Html.ValidationMessageFor(m=>m.AREntity.RevenueConfirmationDate)
+            </li>
+        </ol>
+        <input type="submit" value="Save" />
+    </fieldset>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
