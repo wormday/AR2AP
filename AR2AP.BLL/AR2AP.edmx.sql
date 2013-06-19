@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 06/18/2013 07:13:36
+-- Date Created: 06/20/2013 01:30:16
 -- Generated from EDMX file: C:\Projects\AR2AP\AR2AP.BLL\AR2AP.edmx
 -- --------------------------------------------------
 
@@ -58,8 +58,8 @@ GO
 IF OBJECT_ID(N'[dbo].[AREntities]', 'U') IS NOT NULL
     DROP TABLE [dbo].[AREntities];
 GO
-IF OBJECT_ID(N'[dbo].[TermEntities]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[TermEntities];
+IF OBJECT_ID(N'[dbo].[TeamEntities]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TeamEntities];
 GO
 IF OBJECT_ID(N'[dbo].[EmpEntities]', 'U') IS NOT NULL
     DROP TABLE [dbo].[EmpEntities];

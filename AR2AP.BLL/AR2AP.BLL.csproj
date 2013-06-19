@@ -83,6 +83,9 @@
     <Compile Include="EmpEntity.cs">
       <DependentUpon>AR2AP.tt</DependentUpon>
     </Compile>
+    <Compile Include="Enum\ClientTypeEnum.cs" />
+    <Compile Include="Enum\CurrencyTypeEnum.cs" />
+    <Compile Include="Enum\InvoiceTypeEnum.cs" />
     <Compile Include="Partial\AgencyEntity.partial.cs" />
     <Compile Include="Partial\ClientEntity.partial.cs" />
     <Compile Include="Partial\EmpEntity.partial.cs" />

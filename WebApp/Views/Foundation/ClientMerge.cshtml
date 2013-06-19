@@ -29,8 +29,8 @@
             </li>
             <li>
                 @Html.LabelFor(m => m.Entity.ClientType)
-                @Html.EnumDropDownListFor(m=>m.Entity.ClientType,ClientTypeEnum.代理)
-                @Html.ValidationMessageFor(m => m.Entity.ClientType)
+                @Html.EnumDropDownListFor(m=>m.Entity.ClientTypeEnum,ClientTypeEnum.代理)
+                @Html.ValidationMessageFor(m => m.Entity.ClientTypeEnum)
             </li>
         </ol>
         <input type="submit" value="Save" />
