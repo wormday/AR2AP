@@ -22,6 +22,8 @@ namespace AR2AP.WebApp.Controllers
         public ActionResult Add()
         {
             AddVModel vModel = new AddVModel();
+            vModel.AREntity = new AREntity();
+            vModel.AREntity.InvoiceTypeEnum = InvoiceTypeEnum.服务业;
             return View(vModel);
         }
         [HttpPost]

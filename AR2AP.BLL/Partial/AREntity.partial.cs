@@ -5,7 +5,11 @@ namespace AR2AP.BLL
     [MetadataType(typeof(AREntityMetadata))]
     public partial class AREntity
     {
-
+        [Display(Name = "Invoice Type")]
+        public InvoiceTypeEnum InvoiceTypeEnum {
+            get { return (InvoiceTypeEnum)InvoiceType; }
+            set { InvoiceType = (byte)value; }
+        }
 
         private class AREntityMetadata
         {
@@ -19,8 +23,8 @@ namespace AR2AP.BLL
             [Display(Name = "Agency")]
             public short AgencyID { get; set; }
             [Required(ErrorMessage = "*")]
-            [Display(Name = "Term")]
-            public short TermID { get; set; }
+            [Display(Name = "Team")]
+            public short TeamID { get; set; }
             [Display(Name = "Project No")]
             public string ProjectNo { get; set; }
             [Display(Name = "Contract No")]

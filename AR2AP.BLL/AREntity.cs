@@ -25,7 +25,7 @@ namespace AR2AP.BLL
         /// <summary>客户编号</summary>
         public short ClientID { get; set; }
         public short AgencyID { get; set; }
-        public short TermID { get; set; }
+        public short TeamID { get; set; }
         /// <summary>项目编号</summary>
         public string ProjectNo { get; set; }
         /// <summary>合同编号</summary>

@@ -360,7 +360,7 @@
           <NavigationProperty Name="AgencyEntity" Relationship="AR2AP.AgencyEntityAREntity" FromRole="AREntity" ToRole="AgencyEntity" />
           <Property Type="Int16" Name="AgencyID" Nullable="false" />
           <NavigationProperty Name="TeamEntity" Relationship="AR2AP.AREntityTermEntity" FromRole="AREntity" ToRole="TermEntity" />
-          <Property Type="Int16" Name="TermID" Nullable="false" />
+          <Property Type="Int16" Name="TeamID" Nullable="false" />
           <Property Type="String" Name="ProjectNo" Nullable="false" MaxLength="50">
             <Documentation>
               <Summary>项目编号</Summary>
@@ -465,7 +465,7 @@
               <PropertyRef Name="TeamID" />
             </Principal>
             <Dependent Role="AREntity">
-              <PropertyRef Name="TermID" />
+              <PropertyRef Name="TeamID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -649,7 +649,7 @@
           <ScalarProperty Name="ARID" ColumnName="ARID" />
           <ScalarProperty Name="ClientID" ColumnName="ClientID" />
           <ScalarProperty Name="AgencyID" ColumnName="AgencyID" />
-          <ScalarProperty Name="TermID" ColumnName="TermID" />
+          <ScalarProperty Name="TeamID" ColumnName="TermID" />
           <ScalarProperty Name="ProjectNo" ColumnName="ProjectNo" />
           <ScalarProperty Name="ContractNo" ColumnName="ContractNo" />
           <ScalarProperty Name="Campaingn" ColumnName="Campaingn" />

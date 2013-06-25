@@ -2,6 +2,7 @@
     ViewBag.Title = "AR Add";
 }
 @model AR2AP.WebApp.Models.AR.AddVModel
+@using AR2AP.WebApp.Common.HtmlHelper
 @section submenu
 {
     @Html.Partial("_SubMenuAR")
@@ -16,13 +17,13 @@
                 @Html.HiddenFor(m => m.AREntity.ARID)
             </li>
             <li>
-                @Html.LabelFor(m => m.AREntity.TermID)
-                @Html.TextBoxFor(m => m.AREntity.TermID)
-                @Html.ValidationMessageFor(m => m.AREntity.TermID)
+                @Html.LabelFor(m => m.AREntity.TeamID)
+                @Html.TextBoxFor(m => m.AREntity.TeamID)
+                @Html.ValidationMessageFor(m => m.AREntity.TeamID)
             </li>
             <li>
                 @Html.LabelFor(m => m.AREntity.AgencyID)
-                @Html.TextBoxFor(m=>m.AREntity.AgencyID)
+                @Html.AgencyDropDownListFor(m => m.AREntity.AgencyID, null, null, null)
                 @Html.ValidationMessageFor(m=>m.AREntity.AgencyID)
             </li>
             <li>
@@ -32,7 +33,7 @@
             </li>
             <li>
                 @Html.LabelFor(m => m.AREntity.ClientID)
-                @Html.TextBoxFor(m=>m.AREntity.ClientID)
+                @Html.ClientDropDownListFor(m => m.AREntity.AgencyID, null, null, null)
                 @Html.ValidationMessageFor(m=>m.AREntity.ClientID)
             </li>
             <li>
@@ -76,9 +77,9 @@
                 @Html.ValidationMessageFor(m=>m.AREntity.InvoiceNo)
             </li>
             <li>
-                @Html.LabelFor(m => m.AREntity.InvoiceType)
-                @Html.TextBoxFor(m=>m.AREntity.InvoiceType)
-                @Html.ValidationMessageFor(m=>m.AREntity.InvoiceType)
+                @Html.LabelFor(m => m.AREntity.InvoiceTypeEnum)
+                @Html.EnumDropDownListFor(m=>m.AREntity.InvoiceTypeEnum,Model.AREntity.InvoiceTypeEnum)
+                @Html.ValidationMessageFor(m=>m.AREntity.InvoiceTypeEnum)
             </li>
             <li>
                 @Html.LabelFor(m => m.AREntity.ProjectNo)
