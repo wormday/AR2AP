@@ -46,6 +46,10 @@ namespace AR2AP.BLL.Repository
         {
             return new ClientRepository(_context);
         }
+        public ARRepository GetARRepository()
+        {
+            return new ARRepository(_context);
+        }
         #endregion
     }
 }
