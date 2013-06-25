@@ -87,6 +87,7 @@
     <Compile Include="Enum\CurrencyTypeEnum.cs" />
     <Compile Include="Enum\InvoiceTypeEnum.cs" />
     <Compile Include="Partial\AgencyEntity.partial.cs" />
+    <Compile Include="Partial\AREntity.partial.cs" />
     <Compile Include="Partial\ClientEntity.partial.cs" />
     <Compile Include="Partial\EmpEntity.partial.cs" />
     <Compile Include="Partial\TeamEntity.partial.cs" />

@@ -185,5 +185,33 @@ namespace AR2AP.WebApp.Common.HtmlHelper
         }
         #endregion
 
+
+        public static SelectList ToSelectListBy<T>(this IEnumerable<T> dataList, string valueName, string textName)
+        {
+            if (dataList == null || dataList.Count() <= 0)
+            {
+                return null;
+            }
+            SelectList list = new SelectList(dataList);
+            SelectList rtnList = new SelectList(dataList.AsEnumerable(), valueName, textName);
+            return rtnList;
+        }
+        public static IEnumerable<SelectListItem> ToSelectListBy<T>(this IEnumerable<T> dataList, string valueName, Func<T, string> textFunc)
+        {
+            if (dataList == null || dataList.Count() <= 0)
+            {
+                return null;
+            }
+            ICollection<SelectListItem> rtnCollection = new List<SelectListItem>();
+            foreach (var data in dataList)
+            {
+                SelectListItem selectListItem = new SelectListItem();
+                selectListItem.Value = data.GetType().GetProperty(valueName).GetValue(data,null).ToString();
+                selectListItem.Text = textFunc(data);
+                rtnCollection.Add(selectListItem);
+            }
+            return rtnCollection;
+        }
+
     }
 }

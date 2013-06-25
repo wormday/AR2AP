@@ -187,8 +187,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Authentication\AuthUtility.cs" />
+    <Compile Include="Common\HtmlHelper\AgencyDropDownListExtensions.cs" />
+    <Compile Include="Common\HtmlHelper\ClientDropDownListExtensions.cs" />
     <Compile Include="Common\HtmlHelper\DropDownListExtensions.cs" />
     <Compile Include="Common\HtmlHelper\EnumExtensions.cs" />
+    <Compile Include="Common\HtmlHelper\TeamDropDownListExtensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ARController.cs" />
     <Compile Include="Controllers\FoundationController.cs" />
