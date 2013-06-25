@@ -5,9 +5,12 @@ namespace AR2AP.BLL
     [MetadataType(typeof(AgencyEntityMetadata))]
     public partial class AgencyEntity
     {
+        public CurrencyTypeEnum CurrencyTypeEnum {
+            get { return (CurrencyTypeEnum)this.CurrencyType; }
+            set { this.CurrencyType = (byte)value; }
+        }
 
-
-        private class AgencyEntityMetadata
+        public class AgencyEntityMetadata
         {
             [Required(ErrorMessage = "*")]
             public object AgencyName { get; set; }
