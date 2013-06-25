@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace AR2AP.BLL
+﻿namespace AR2AP.BLL
 {
-    enum CurrencyTypeEnum
+    using System;
+
+    public enum CurrencyTypeEnum : byte
     {
+        RMB = 1,
+        USD = 2
     }
 }

@@ -83,13 +83,16 @@
     <Compile Include="EmpEntity.cs">
       <DependentUpon>AR2AP.tt</DependentUpon>
     </Compile>
+    <Compile Include="Enum\ClientTypeEnum.cs" />
     <Compile Include="Enum\CurrencyTypeEnum.cs" />
+    <Compile Include="Enum\InvoiceTypeEnum.cs" />
     <Compile Include="Partial\AgencyEntity.partial.cs" />
     <Compile Include="Partial\ClientEntity.partial.cs" />
     <Compile Include="Partial\EmpEntity.partial.cs" />
     <Compile Include="Partial\TeamEntity.partial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AgencyRepository.cs" />
+    <Compile Include="Repository\ARRepository.cs" />
     <Compile Include="Repository\ClientRepository.cs" />
     <Compile Include="Repository\EmpRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
