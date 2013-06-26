@@ -13,85 +13,83 @@
     <fieldset class="ui-corner-all">
         <legend>111</legend>
         <ol>
-            <li>
+            <li class="tr">
                 @Html.HiddenFor(m => m.AREntity.ARID)
-            </li>
-            <li>
                 @Html.LabelFor(m => m.AREntity.TeamID)
-                @Html.TeamDropDownListFor(o=>o.AREntity.TeamID,null,null,null)
+                @Html.TeamDropDownListFor(o => o.AREntity.TeamID, null, null, new {style="width:200px;" })
                 @Html.ValidationMessageFor(m => m.AREntity.TeamID)
             </li>
-            <li>
+            <li class="tr">
                 @Html.LabelFor(m => m.AREntity.AgencyID)
                 @Html.AgencyDropDownListFor(m => m.AREntity.AgencyID, null, null, null)
                 @Html.ValidationMessageFor(m=>m.AREntity.AgencyID)
             </li>
-            <li>
+            <li class="tr">
                 @Html.LabelFor(m => m.AREntity.Campaingn)
                 @Html.TextBoxFor(m=>m.AREntity.Campaingn)
                 @Html.ValidationMessageFor(m=>m.AREntity.Campaingn)
             </li>
-            <li>
+            <li class="tr">
                 @Html.LabelFor(m => m.AREntity.ClientID)
                 @Html.ClientDropDownListFor(m => m.AREntity.AgencyID, null, null, null)
                 @Html.ValidationMessageFor(m=>m.AREntity.ClientID)
             </li>
-            <li>
+            <li class="tr">
                 @Html.LabelFor(m => m.AREntity.CompaignAmount)
                 @Html.TextBoxFor(m=>m.AREntity.CompaignAmount)
                 @Html.ValidationMessageFor(m=>m.AREntity.CompaignAmount)
             </li>
-            <li>
+            <li class="tr">
                 @Html.LabelFor(m => m.AREntity.CompaignStart)
                 @Html.EditorFor(m=>m.AREntity.CompaignStart)
                 @Html.ValidationMessageFor(m=>m.AREntity.CompaignStart)
             </li>
-            <li>
+            <li class="tr">
                 @Html.LabelFor(m => m.AREntity.CompaignEnd)
                 @Html.EditorFor(m=>m.AREntity.CompaignEnd)
                 @Html.ValidationMessageFor(m=>m.AREntity.CompaignEnd)
             </li>
-            <li>
+            <li class="tr">
                 @Html.LabelFor(m => m.AREntity.ContractNo)
                 @Html.TextBoxFor(m=>m.AREntity.ContractNo)
                 @Html.ValidationMessageFor(m=>m.AREntity.ContractNo)
             </li>
-            <li>
+            <li class="tr">
                 @Html.LabelFor(m => m.AREntity.DueDate)
                 @Html.TextBoxFor(m=>m.AREntity.DueDate)
                 @Html.ValidationMessageFor(m=>m.AREntity.DueDate)
             </li>
-            <li>
+            <li class="tr">
                 @Html.LabelFor(m => m.AREntity.InvoiceAmount)
                 @Html.TextBoxFor(m=>m.AREntity.InvoiceAmount)
                 @Html.ValidationMessageFor(m=>m.AREntity.InvoiceAmount)
             </li>
-            <li>
+            <li class="tr">
                 @Html.LabelFor(m => m.AREntity.InvoiceDate)
                 @Html.EditorFor(m=>m.AREntity.InvoiceDate)
                 @Html.ValidationMessageFor(m=>m.AREntity.InvoiceDate)
             </li>
-            <li>
+            <li class="tr">
                 @Html.LabelFor(m => m.AREntity.InvoiceNo)
                 @Html.TextBoxFor(m=>m.AREntity.InvoiceNo)
                 @Html.ValidationMessageFor(m=>m.AREntity.InvoiceNo)
             </li>
-            <li>
+            <li class="tr">
                 @Html.LabelFor(m => m.AREntity.InvoiceTypeEnum)
                 @Html.EnumDropDownListFor(m=>m.AREntity.InvoiceTypeEnum,Model.AREntity.InvoiceTypeEnum)
                 @Html.ValidationMessageFor(m=>m.AREntity.InvoiceTypeEnum)
             </li>
-            <li>
+            <li class="tr">
                 @Html.LabelFor(m => m.AREntity.ProjectNo)
                 @Html.TextBoxFor(m=>m.AREntity.ProjectNo)
                 @Html.ValidationMessageFor(m=>m.AREntity.ProjectNo)
             </li>
-            <li>
+            <li class="tr">
                 @Html.LabelFor(m => m.AREntity.Remark)
                 @Html.TextBoxFor(m=>m.AREntity.Remark)
                 @Html.ValidationMessageFor(m=>m.AREntity.Remark)
             </li>
-            <li>
+            <li class="tr">
                 @Html.LabelFor(m => m.AREntity.RevenueConfirmationDate)
                 @Html.EditorFor(m=>m.AREntity.RevenueConfirmationDate)
                 @Html.ValidationMessageFor(m=>m.AREntity.RevenueConfirmationDate)
