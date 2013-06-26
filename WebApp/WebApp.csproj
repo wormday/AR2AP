@@ -330,9 +330,12 @@
     <Content Include="Views\Shared\_SubMenuAR.cshtml" />
     <Content Include="Views\AR\List.cshtml" />
     <Content Include="Views\AR\Add.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
+    <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

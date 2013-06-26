@@ -18,7 +18,7 @@
             </li>
             <li>
                 @Html.LabelFor(m => m.AREntity.TeamID)
-                @Html.TextBoxFor(m => m.AREntity.TeamID)
+                @Html.TeamDropDownListFor(o=>o.AREntity.TeamID,null,null,null)
                 @Html.ValidationMessageFor(m => m.AREntity.TeamID)
             </li>
             <li>
@@ -43,12 +43,12 @@
             </li>
             <li>
                 @Html.LabelFor(m => m.AREntity.CompaignStart)
-                @Html.TextBoxFor(m=>m.AREntity.CompaignStart)
+                @Html.EditorFor(m=>m.AREntity.CompaignStart)
                 @Html.ValidationMessageFor(m=>m.AREntity.CompaignStart)
             </li>
             <li>
                 @Html.LabelFor(m => m.AREntity.CompaignEnd)
-                @Html.TextBoxFor(m=>m.AREntity.CompaignEnd)
+                @Html.EditorFor(m=>m.AREntity.CompaignEnd)
                 @Html.ValidationMessageFor(m=>m.AREntity.CompaignEnd)
             </li>
             <li>
@@ -68,7 +68,7 @@
             </li>
             <li>
                 @Html.LabelFor(m => m.AREntity.InvoiceDate)
-                @Html.TextBoxFor(m=>m.AREntity.InvoiceDate)
+                @Html.EditorFor(m=>m.AREntity.InvoiceDate)
                 @Html.ValidationMessageFor(m=>m.AREntity.InvoiceDate)
             </li>
             <li>
@@ -93,7 +93,7 @@
             </li>
             <li>
                 @Html.LabelFor(m => m.AREntity.RevenueConfirmationDate)
-                @Html.TextBoxFor(m=>m.AREntity.RevenueConfirmationDate)
+                @Html.EditorFor(m=>m.AREntity.RevenueConfirmationDate)
                 @Html.ValidationMessageFor(m=>m.AREntity.RevenueConfirmationDate)
             </li>
         </ol>

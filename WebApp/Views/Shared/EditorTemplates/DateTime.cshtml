@@ -1,0 +1,11 @@
+﻿@model DateTime?
+@{
+    if (Model != null)
+    {
+    @Html.TextBoxFor(model=>model, "{0:yyyy/MM/dd}", new { @class = "datepicker",style="width:100px;" })
+    }
+    else
+    {
+    @Html.TextBoxFor(model=>model, "", new { @class = "datepicker",style="width:100px;" })
+    }
+}

@@ -513,7 +513,15 @@ input.input-validation-error {
 input[type="checkbox"].input-validation-error {
     border: 0 none;
 }
-
+input.datepicker
+{
+    text-align: center;
+    background-image: url("/Content/Images/calendar.gif");
+    background-position: right center;
+    background-repeat: no-repeat;
+    padding-right: 18px;
+    width: 78px;
+}
 .validation-summary-errors {
     color: #e80c4d;
     font-weight: bold;
