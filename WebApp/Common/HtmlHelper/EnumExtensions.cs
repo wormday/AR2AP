@@ -42,11 +42,11 @@ namespace AR2AP.WebApp.Common.HtmlHelper
                 list = type.GetFields();
                 enumType = type;
             }
-            //else if (type.GenericTypeArguments[0].IsEnum)
-            //{
-            //    list=type.GenericTypeArguments[0].GetFields();
-            //    enumType = type.GenericTypeArguments[0];
-            //}
+            else if (type.GetGenericArguments()[0].IsEnum)
+            {
+                list = type.GetGenericArguments()[0].GetFields();
+                enumType = type.GetGenericArguments()[0];
+            }
             else
             {
                 throw new ArgumentException("参数只能为枚举类型", "type");

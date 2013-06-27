@@ -21,9 +21,9 @@ namespace AR2AP.BLL
         }
         public int CollectionID { get; set; }
         public Nullable<short> ClientID { get; set; }
-        public string CollectionDate { get; set; }
+        public System.DateTime CollectionDate { get; set; }
         public short AgencyID { get; set; }
-        public string CollectionAmount { get; set; }
+        public decimal CollectionAmount { get; set; }
         public string CollectionRemark { get; set; }
     
         public virtual ClientEntity ClientEntity { get; set; }

@@ -6,11 +6,25 @@
 {
     @Html.Partial("_SubMenuAR")
 }
-<div class="buttonset" style="margin:5px 0px; font-size:10px; font-weight:normal"><a href="/AR/Add">Add New</a></div>
+<div class="buttonset" style="margin:5px 0px; font-size:10px; font-weight:normal"><a href="/AR/Add">Add New AR</a></div>
 <table>
     <tr>
-        <th>ID</th>
-        <th>Agency Name</th>
-        <th>Currency Type</th>
+        <th>Campaingn</th>
+        <th>Duration</th>
+        <th>Contract No</th>
+        <th>Due Date</th>
+        <th>Invoice</th>
     </tr>
+    @foreach (var item in Model.AREntities)
+    {
+    <tr>
+        <td><a href="/AR/Modify/@item.ARID">@item.Campaingn<br />@item.ContractNo</a></td>
+        <td>@item.CompaignStart.ToString("yyyy-MM-dd")<br />@item.CompaignEnd.ToString("yyyy-MM-dd")</td>
+        <td></td>
+        <td>@item.DueDate.ToString("yyyy-MM-dd")</td>
+        <td>@item.InvoiceAmount<br />@item.InvoiceDate<br />@item.InvoiceTypeEnum/@item.InvoiceNo</td>
+        <td>@item.ProjectNo</td>
+        <td>@item.CompaignAmount</td>
+    </tr>
+    }
 </table>

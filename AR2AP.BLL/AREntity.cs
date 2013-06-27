@@ -24,7 +24,9 @@ namespace AR2AP.BLL
         public int ARID { get; set; }
         /// <summary>客户编号</summary>
         public short ClientID { get; set; }
+        /// <summary>公司</summary>
         public short AgencyID { get; set; }
+        /// <summary>团队</summary>
         public short TeamID { get; set; }
         /// <summary>项目编号</summary>
         public string ProjectNo { get; set; }
@@ -33,22 +35,22 @@ namespace AR2AP.BLL
         /// <summary>项目</summary>
         public string Campaingn { get; set; }
         /// <summary>项目开始日期</summary>
-        public string CompaignStart { get; set; }
+        public System.DateTime CompaignStart { get; set; }
         /// <summary>项目结束日期</summary>
-        public string CompaignEnd { get; set; }
+        public System.DateTime CompaignEnd { get; set; }
         /// <summary>项目金额</summary>
-        public string CompaignAmount { get; set; }
+        public decimal CompaignAmount { get; set; }
         /// <summary>收款到期日</summary>
-        public string DueDate { get; set; }
+        public System.DateTime DueDate { get; set; }
         /// <summary>发票号码</summary>
         public string InvoiceNo { get; set; }
         /// <summary>开票时间</summary>
-        public string InvoiceDate { get; set; }
-        public byte InvoiceType { get; set; }
+        public Nullable<System.DateTime> InvoiceDate { get; set; }
+        public Nullable<byte> InvoiceType { get; set; }
         /// <summary>发票金额</summary>
-        public string InvoiceAmount { get; set; }
+        public Nullable<decimal> InvoiceAmount { get; set; }
         /// <summary>应收确认时间</summary>
-        public string RevenueConfirmationDate { get; set; }
+        public System.DateTime RevenueConfirmationDate { get; set; }
         public string Remark { get; set; }
     
         public virtual ClientEntity ClientEntity { get; set; }

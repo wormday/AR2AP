@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 06/20/2013 01:30:16
--- Generated from EDMX file: C:\Projects\AR2AP\AR2AP.BLL\AR2AP.edmx
+-- Date Created: 06/27/2013 16:41:56
+-- Generated from EDMX file: D:\Projects\AR2AP\AR2AP.BLL\AR2AP.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -100,20 +100,20 @@ CREATE TABLE [dbo].[AREntities] (
     [ARID] int IDENTITY(1,1) NOT NULL,
     [ClientID] smallint  NOT NULL,
     [AgencyID] smallint  NOT NULL,
-    [TermID] smallint  NOT NULL,
-    [ProjectNo] nvarchar(50)  NOT NULL,
-    [ContractNo] nvarchar(50)  NOT NULL,
-    [Campaingn] nvarchar(max)  NOT NULL,
-    [CompaignStart] nvarchar(max)  NOT NULL,
-    [CompaignEnd] nvarchar(max)  NOT NULL,
-    [CompaignAmount] nvarchar(max)  NOT NULL,
-    [DueDate] nvarchar(max)  NOT NULL,
-    [InvoiceNo] nvarchar(max)  NOT NULL,
-    [InvoiceDate] nvarchar(max)  NOT NULL,
-    [InvoiceType] tinyint  NOT NULL,
-    [InvoiceAmount] nvarchar(max)  NOT NULL,
-    [RevenueConfirmationDate] nvarchar(max)  NOT NULL,
-    [Remark] nvarchar(max)  NOT NULL
+    [TeamID] smallint  NOT NULL,
+    [ProjectNo] varchar(50)  NULL,
+    [ContractNo] varchar(50)  NULL,
+    [Campaingn] nvarchar(200)  NOT NULL,
+    [CompaignStart] datetime  NOT NULL,
+    [CompaignEnd] datetime  NOT NULL,
+    [CompaignAmount] decimal(12,2)  NOT NULL,
+    [DueDate] datetime  NOT NULL,
+    [InvoiceNo] varchar(50)  NULL,
+    [InvoiceDate] datetime  NULL,
+    [InvoiceType] tinyint  NULL,
+    [InvoiceAmount] decimal(12,2)  NULL,
+    [RevenueConfirmationDate] datetime  NOT NULL,
+    [Remark] nvarchar(max)  NULL
 );
 GO
 
@@ -147,9 +147,9 @@ GO
 CREATE TABLE [dbo].[CollectionEntities] (
     [CollectionID] int IDENTITY(1,1) NOT NULL,
     [ClientID] smallint  NULL,
-    [CollectionDate] nvarchar(max)  NOT NULL,
+    [CollectionDate] datetime  NOT NULL,
     [AgencyID] smallint  NOT NULL,
-    [CollectionAmount] nvarchar(max)  NOT NULL,
+    [CollectionAmount] decimal(12,2)  NOT NULL,
     [CollectionRemark] nvarchar(max)  NOT NULL
 );
 GO
@@ -157,10 +157,10 @@ GO
 -- Creating table 'WriteOffEntities'
 CREATE TABLE [dbo].[WriteOffEntities] (
     [WriteOffID] int IDENTITY(1,1) NOT NULL,
-    [AREntityARID] int  NOT NULL,
+    [ARID] int  NOT NULL,
     [CollectionID] int  NOT NULL,
-    [WriteOffDate] nvarchar(max)  NOT NULL,
-    [WriteOffAmount] nvarchar(max)  NOT NULL,
+    [WriteOffDate] datetime  NOT NULL,
+    [WriteOffAmount] decimal(12,2)  NOT NULL,
     [WriteOffRemark] nvarchar(max)  NOT NULL
 );
 GO
@@ -249,10 +249,10 @@ ON [dbo].[AREntities]
     ([AgencyID]);
 GO
 
--- Creating foreign key on [TermID] in table 'AREntities'
+-- Creating foreign key on [TeamID] in table 'AREntities'
 ALTER TABLE [dbo].[AREntities]
 ADD CONSTRAINT [FK_AREntityTermEntity]
-    FOREIGN KEY ([TermID])
+    FOREIGN KEY ([TeamID])
     REFERENCES [dbo].[TeamEntities]
         ([TeamID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -260,7 +260,7 @@ ADD CONSTRAINT [FK_AREntityTermEntity]
 -- Creating non-clustered index for FOREIGN KEY 'FK_AREntityTermEntity'
 CREATE INDEX [IX_FK_AREntityTermEntity]
 ON [dbo].[AREntities]
-    ([TermID]);
+    ([TeamID]);
 GO
 
 -- Creating foreign key on [ARID] in table 'ARRelatedEmpEntities'
@@ -319,10 +319,10 @@ ON [dbo].[CollectionEntities]
     ([AgencyID]);
 GO
 
--- Creating foreign key on [AREntityARID] in table 'WriteOffEntities'
+-- Creating foreign key on [ARID] in table 'WriteOffEntities'
 ALTER TABLE [dbo].[WriteOffEntities]
 ADD CONSTRAINT [FK_WriteOffEntityAREntity]
-    FOREIGN KEY ([AREntityARID])
+    FOREIGN KEY ([ARID])
     REFERENCES [dbo].[AREntities]
         ([ARID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -330,7 +330,7 @@ ADD CONSTRAINT [FK_WriteOffEntityAREntity]
 -- Creating non-clustered index for FOREIGN KEY 'FK_WriteOffEntityAREntity'
 CREATE INDEX [IX_FK_WriteOffEntityAREntity]
 ON [dbo].[WriteOffEntities]
-    ([AREntityARID]);
+    ([ARID]);
 GO
 
 -- Creating foreign key on [CollectionID] in table 'WriteOffEntities'

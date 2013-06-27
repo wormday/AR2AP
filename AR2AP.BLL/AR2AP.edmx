@@ -75,20 +75,20 @@
     <Property Name="ARID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ClientID" Type="smallint" Nullable="false" />
     <Property Name="AgencyID" Type="smallint" Nullable="false" />
-    <Property Name="TermID" Type="smallint" Nullable="false" />
-    <Property Name="ProjectNo" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="ContractNo" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="Campaingn" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CompaignStart" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CompaignEnd" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CompaignAmount" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DueDate" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="InvoiceNo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="InvoiceDate" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="InvoiceType" Type="tinyint" Nullable="false" />
-    <Property Name="InvoiceAmount" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="RevenueConfirmationDate" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Remark" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TeamID" Type="smallint" Nullable="false" />
+    <Property Name="ProjectNo" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="ContractNo" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Campaingn" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="CompaignStart" Type="datetime" Nullable="false" />
+    <Property Name="CompaignEnd" Type="datetime" Nullable="false" />
+    <Property Name="CompaignAmount" Type="decimal" Nullable="false" Precision="12" Scale="2" />
+    <Property Name="DueDate" Type="datetime" Nullable="false" />
+    <Property Name="InvoiceNo" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="InvoiceDate" Type="datetime" Nullable="true" />
+    <Property Name="InvoiceType" Type="tinyint" Nullable="true" />
+    <Property Name="InvoiceAmount" Type="decimal" Nullable="true" Precision="12" Scale="2" />
+    <Property Name="RevenueConfirmationDate" Type="datetime" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="TeamEntities">
     <Key>
@@ -122,9 +122,9 @@
     </Key>
     <Property Name="CollectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ClientID" Type="smallint" Nullable="true" />
-    <Property Name="CollectionDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CollectionDate" Type="datetime" Nullable="false" />
     <Property Name="AgencyID" Type="smallint" Nullable="false" />
-    <Property Name="CollectionAmount" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CollectionAmount" Type="decimal" Nullable="false" Precision="12" Scale="2" />
     <Property Name="CollectionRemark" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="WriteOffEntities">
@@ -132,10 +132,10 @@
       <PropertyRef Name="WriteOffID" />
     </Key>
     <Property Name="WriteOffID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AREntityARID" Type="int" Nullable="false" />
+    <Property Name="ARID" Type="int" Nullable="false" />
     <Property Name="CollectionID" Type="int" Nullable="false" />
-    <Property Name="WriteOffDate" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="WriteOffAmount" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="WriteOffDate" Type="datetime" Nullable="false" />
+    <Property Name="WriteOffAmount" Type="decimal" Nullable="false" Precision="12" Scale="2" />
     <Property Name="WriteOffRemark" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="AREntityClientEntity">
@@ -170,7 +170,7 @@
         <PropertyRef Name="TeamID" />
       </Principal>
       <Dependent Role="AREntity">
-        <PropertyRef Name="TermID" />
+        <PropertyRef Name="TeamID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -230,7 +230,7 @@
         <PropertyRef Name="ARID" />
       </Principal>
       <Dependent Role="WriteOffEntity">
-        <PropertyRef Name="AREntityARID" />
+        <PropertyRef Name="ARID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -358,67 +358,75 @@
             </Documentation>
           </Property>
           <NavigationProperty Name="AgencyEntity" Relationship="AR2AP.AgencyEntityAREntity" FromRole="AREntity" ToRole="AgencyEntity" />
-          <Property Type="Int16" Name="AgencyID" Nullable="false" />
+          <Property Type="Int16" Name="AgencyID" Nullable="false" >
+            <Documentation>
+              <Summary>公司</Summary>
+            </Documentation>
+          </Property>
           <NavigationProperty Name="TeamEntity" Relationship="AR2AP.AREntityTermEntity" FromRole="AREntity" ToRole="TermEntity" />
-          <Property Type="Int16" Name="TeamID" Nullable="false" />
-          <Property Type="String" Name="ProjectNo" Nullable="false" MaxLength="50">
+          <Property Type="Int16" Name="TeamID" Nullable="false" >
+            <Documentation>
+              <Summary>团队</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="ProjectNo" Nullable="true" MaxLength="50" Unicode="false">
             <Documentation>
               <Summary>项目编号</Summary>
             </Documentation>
           </Property>
           <NavigationProperty Name="ARRelatedEmpEntities" Relationship="AR2AP.ARRelatedEmpEntityAREntity" FromRole="AREntity" ToRole="ARRelatedEmpEntity" />
-          <Property Type="String" Name="ContractNo" Nullable="false" MaxLength="50">
+          <Property Type="String" Name="ContractNo" Nullable="true" MaxLength="50" Unicode="false">
             <Documentation>
               <Summary>合同编号</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="Campaingn" Nullable="false">
+          <Property Type="String" Name="Campaingn" Nullable="false" Unicode="true" MaxLength="200">
             <Documentation>
               <Summary>项目</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="CompaignStart" Nullable="false">
+          <Property Type="DateTime" Name="CompaignStart" Nullable="false">
             <Documentation>
               <Summary>项目开始日期</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="CompaignEnd" Nullable="false">
+          <Property Type="DateTime" Name="CompaignEnd" Nullable="false">
             <Documentation>
               <Summary>项目结束日期</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="CompaignAmount" Nullable="false">
+          <Property Type="Decimal" Name="CompaignAmount" Nullable="false" Scale="2" Precision="12">
             <Documentation>
               <Summary>项目金额</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="DueDate" Nullable="false">
+          <Property Type="DateTime" Name="DueDate" Nullable="false">
             <Documentation>
               <Summary>收款到期日</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="InvoiceNo" Nullable="false">
+          <Property Type="String" Name="InvoiceNo" Nullable="true" MaxLength="50" Unicode="false">
             <Documentation>
               <Summary>发票号码</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="InvoiceDate" Nullable="false">
+          <Property Type="DateTime" Name="InvoiceDate" Nullable="true">
             <Documentation>
               <Summary>开票时间</Summary>
             </Documentation>
           </Property>
-          <Property Type="Byte" Name="InvoiceType" Nullable="false" />
-          <Property Type="String" Name="InvoiceAmount" Nullable="false">
+          <Property Type="Byte" Name="InvoiceType" Nullable="true" />
+          <Property Type="Decimal" Name="InvoiceAmount" Nullable="true" Scale="2" Precision="12">
             <Documentation>
               <Summary>发票金额</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="RevenueConfirmationDate" Nullable="false">
+          <Property Type="DateTime" Name="RevenueConfirmationDate" Nullable="false">
             <Documentation>
               <Summary>应收确认时间</Summary>
             </Documentation>
           </Property>
-          <Property Type="String" Name="Remark" Nullable="false" />
+          <Property Type="String" Name="Remark" Nullable="true" Unicode="true" MaxLength="Max" />
           <NavigationProperty Name="WriteOffEntities" Relationship="AR2AP.WriteOffEntityAREntity" FromRole="AREntity" ToRole="WriteOffEntity" />
         </EntityType>
         <Association Name="AREntityClientEntity">
@@ -547,11 +555,11 @@
           <Property Type="Int32" Name="CollectionID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="ClientEntity" Relationship="AR2AP.CollectionClientEntity" FromRole="Collection" ToRole="ClientEntity" />
           <Property Type="Int16" Name="ClientID" Nullable="true" />
-          <Property Type="String" Name="CollectionDate" Nullable="false" />
+          <Property Type="DateTime" Name="CollectionDate" Nullable="false" />
           <NavigationProperty Name="AgencyEntity" Relationship="AR2AP.CollectionEntityAgencyEntity" FromRole="CollectionEntity" ToRole="AgencyEntity" />
           <Property Type="Int16" Name="AgencyID" Nullable="false" />
-          <Property Type="String" Name="CollectionAmount" Nullable="false" />
-          <Property Type="String" Name="CollectionRemark" Nullable="false" />
+          <Property Type="Decimal" Name="CollectionAmount" Nullable="false" Scale="2" Precision="12" />
+          <Property Type="String" Name="CollectionRemark" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="WriteOffEntities" Relationship="AR2AP.WriteOffEntityCollectionEntity" FromRole="CollectionEntity" ToRole="WriteOffEntity" />
         </EntityType>
         <Association Name="CollectionClientEntity">
@@ -587,12 +595,12 @@
           </Key>
           <Property Type="Int32" Name="WriteOffID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="AREntity" Relationship="AR2AP.WriteOffEntityAREntity" FromRole="WriteOffEntity" ToRole="AREntity" />
-          <Property Type="Int32" Name="AREntityARID" Nullable="false" />
+          <Property Type="Int32" Name="ARID" Nullable="false" />
           <NavigationProperty Name="CollectionEntity" Relationship="AR2AP.WriteOffEntityCollectionEntity" FromRole="WriteOffEntity" ToRole="CollectionEntity" />
           <Property Type="Int32" Name="CollectionID" Nullable="false" />
-          <Property Type="String" Name="WriteOffDate" Nullable="false" />
-          <Property Type="String" Name="WriteOffAmount" Nullable="false" />
-          <Property Type="String" Name="WriteOffRemark" Nullable="false" />
+          <Property Type="DateTime" Name="WriteOffDate" Nullable="false" />
+          <Property Type="Decimal" Name="WriteOffAmount" Nullable="false" Scale="2" Precision="12" />
+          <Property Type="String" Name="WriteOffRemark" Nullable="false" Unicode="true" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="WriteOffEntityAREntity">
           <End Type="AR2AP.WriteOffEntity" Role="WriteOffEntity" Multiplicity="*" />
@@ -602,7 +610,7 @@
               <PropertyRef Name="ARID" />
             </Principal>
             <Dependent Role="WriteOffEntity">
-              <PropertyRef Name="AREntityARID" />
+              <PropertyRef Name="ARID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -649,7 +657,7 @@
           <ScalarProperty Name="ARID" ColumnName="ARID" />
           <ScalarProperty Name="ClientID" ColumnName="ClientID" />
           <ScalarProperty Name="AgencyID" ColumnName="AgencyID" />
-          <ScalarProperty Name="TeamID" ColumnName="TermID" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
           <ScalarProperty Name="ProjectNo" ColumnName="ProjectNo" />
           <ScalarProperty Name="ContractNo" ColumnName="ContractNo" />
           <ScalarProperty Name="Campaingn" ColumnName="Campaingn" />
@@ -711,7 +719,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(AR2AP.WriteOffEntity)">
         <MappingFragment StoreEntitySet="WriteOffEntities">
           <ScalarProperty Name="WriteOffID" ColumnName="WriteOffID" />
-          <ScalarProperty Name="AREntityARID" ColumnName="AREntityARID" />
+          <ScalarProperty Name="ARID" ColumnName="ARID" />
           <ScalarProperty Name="CollectionID" ColumnName="CollectionID" />
           <ScalarProperty Name="WriteOffDate" ColumnName="WriteOffDate" />
           <ScalarProperty Name="WriteOffAmount" ColumnName="WriteOffAmount" />

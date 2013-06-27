@@ -18,21 +18,42 @@ namespace AR2AP.WebApp.Controllers
             vModel.AREntities = service.GetEntities();
             return View(vModel);
         }
+
         [HttpGet]
         public ActionResult Add()
         {
             AddVModel vModel = new AddVModel();
-            vModel.AREntity = new AREntity();
-            vModel.AREntity.InvoiceTypeEnum = InvoiceTypeEnum.服务业;
             return View(vModel);
         }
+
         [HttpPost]
-        public ActionResult Add(AREntity entity)
+        public ActionResult Add(AddVModel vModel)
         {
-            AddVModel vModel = new AddVModel();
-            ARService service = new ARService();
-            service.Add(entity);
+            if (ModelState.IsValid)
+            {
+                ARService service = new ARService();
+                service.Add(vModel.AREntity);
+            }
             return View(vModel);
+        }
+
+        [HttpGet]
+        public ActionResult CollectionAdd()
+        {
+            CollectionAddVModel vModel = new CollectionAddVModel();
+            return View(vModel);
+        }
+
+        [HttpPost]
+        public ActionResult CollectionAdd(CollectionAddVModel vModel)
+        {
+            return null;
+        }
+
+        [HttpGet]
+        public ActionResult CollectionList()
+        {
+            return null;
         }
     }
 }

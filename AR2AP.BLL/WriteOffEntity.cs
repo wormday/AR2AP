@@ -16,10 +16,10 @@ namespace AR2AP.BLL
     public partial class WriteOffEntity
     {
         public int WriteOffID { get; set; }
-        public int AREntityARID { get; set; }
+        public int ARID { get; set; }
         public int CollectionID { get; set; }
-        public string WriteOffDate { get; set; }
-        public string WriteOffAmount { get; set; }
+        public System.DateTime WriteOffDate { get; set; }
+        public decimal WriteOffAmount { get; set; }
         public string WriteOffRemark { get; set; }
     
         public virtual AREntity AREntity { get; set; }

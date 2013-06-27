@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "AR Add";
+    ViewBag.Title = "Add AR";
 }
 @model AR2AP.WebApp.Models.AR.AddVModel
 @using AR2AP.WebApp.Common.HtmlHelper
@@ -31,7 +31,7 @@
             </li>
             <li class="tr">
                 @Html.LabelFor(m => m.AREntity.ClientID)
-                @Html.ClientDropDownListFor(m => m.AREntity.AgencyID, null, null, null)
+                @Html.ClientDropDownListFor(m => m.AREntity.ClientID, null, null, null)
                 @Html.ValidationMessageFor(m=>m.AREntity.ClientID)
             </li>
             <li class="tr">
@@ -56,7 +56,7 @@
             </li>
             <li class="tr">
                 @Html.LabelFor(m => m.AREntity.DueDate)
-                @Html.TextBoxFor(m=>m.AREntity.DueDate)
+                @Html.EditorFor(m=>m.AREntity.DueDate)
                 @Html.ValidationMessageFor(m=>m.AREntity.DueDate)
             </li>
             <li class="tr">

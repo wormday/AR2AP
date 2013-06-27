@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Add Collection";
+}
+@model AR2AP.WebApp.Models.AR.CollectionAddVModel
+@using AR2AP.WebApp.Common.HtmlHelper
+@section submenu
+{
+    @Html.Partial("_SubMenuAR")
+}
+@using (Html.BeginForm()) {
+    <div style="font-size:1.5em; font-weight:bold; padding:0px; margin:0 0 0 10px;">@ViewBag.Title</div>
+    @Html.ValidationSummary(true)
+    <fieldset class="ui-corner-all">
+        <legend>111</legend>
+        <ol>
+            <li class="tr">
+                @Html.HiddenFor(m => m.CollectionEntity.CollectionID)
+                @Html.LabelFor(m => m.CollectionEntity.AgencyID)
+                @Html.AgencyDropDownListFor(o => o.CollectionEntity.AgencyID, null, null, new {style="width:200px;" })
+                @Html.ValidationMessageFor(m => m.CollectionEntity.AgencyID)
+            </li>
+            <li class="tr">
+                @Html.LabelFor(m => m.CollectionEntity.ClientID)
+                @Html.ClientDropDownListFor(m => m.CollectionEntity.ClientID, null, null, null)
+                @Html.ValidationMessageFor(m=>m.CollectionEntity.ClientID)
+            </li>
+            <li class="tr">
+                @Html.LabelFor(m => m.CollectionEntity.CollectionAmount)
+                @Html.TextBoxFor(m=>m.CollectionEntity.CollectionAmount)
+                @Html.ValidationMessageFor(m=>m.CollectionEntity.CollectionAmount)
+            </li>
+            <li class="tr">
+                @Html.LabelFor(m => m.CollectionEntity.CollectionDate)
+                @Html.EditorFor(m => m.CollectionEntity.CollectionDate, null, null, null)
+                @Html.ValidationMessageFor(m=>m.CollectionEntity.CollectionDate)
+            </li>
+            <li class="tr">
+                @Html.LabelFor(m => m.CollectionEntity.CollectionRemark)
+                @Html.TextBoxFor(m=>m.CollectionEntity.CollectionRemark)
+                @Html.ValidationMessageFor(m=>m.CollectionEntity.CollectionRemark)
+            </li>
+ 
+        </ol>
+        <input type="submit" value="Save" />
+    </fieldset>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
