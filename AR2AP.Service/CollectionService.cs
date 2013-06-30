@@ -8,25 +8,24 @@ using AR2AP.Utility;
 
 namespace AR2AP.Service
 {
-    public class ARService
+    public class CollectionService
     {
-        public void Add(AREntity entity)
+        public void Add(CollectionEntity entity)
         {
             using (RepositoryTransaction trans = new RepositoryTransaction())
             {
-                var repository = trans.GetARRepository();
+                var repository = trans.GetCollectionRepository();
                 repository.Add(entity);
                 trans.Commit();
             }
         }
-        public IList<AREntity> GetEntities()
+        public IList<CollectionEntity> GetEntities()
         {
             using (RepositoryTransaction trans = new RepositoryTransaction())
             {
-                var repository = trans.GetARRepository();
-                return repository.FindBySpecification(o => true).ToList();
+                var repository = trans.GetCollectionRepository();
+                return repository.FindBySpecification(o=>true).ToList();
             }
         }
-
     }
 }

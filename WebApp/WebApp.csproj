@@ -201,9 +201,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account\LoginVModel.cs" />
-    <Compile Include="Models\AR\CollectionAddVModel.cs" />
+    <Compile Include="Models\Collection\AddVModel.cs" />
     <Compile Include="Models\AR\AddVModel.cs" />
-    <Compile Include="Models\AR\CollectionListVModel.cs" />
+    <Compile Include="Models\Collection\ListVModel.cs" />
     <Compile Include="Models\AR\ListVModel.cs" />
     <Compile Include="Models\CurrEmpData.cs" />
     <Compile Include="Models\Foundation\AgencyMergeVModel.cs" />
@@ -334,7 +334,8 @@
     <Content Include="Views\AR\List.cshtml" />
     <Content Include="Views\AR\Add.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
-    <Content Include="Views\AR\CollectionAdd.cshtml" />
+    <Content Include="Views\Collection\Add.cshtml" />
+    <Content Include="Views\Collection\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

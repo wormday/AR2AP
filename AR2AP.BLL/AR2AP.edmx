@@ -125,7 +125,7 @@
     <Property Name="CollectionDate" Type="datetime" Nullable="false" />
     <Property Name="AgencyID" Type="smallint" Nullable="false" />
     <Property Name="CollectionAmount" Type="decimal" Nullable="false" Precision="12" Scale="2" />
-    <Property Name="CollectionRemark" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CollectionRemark" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="WriteOffEntities">
     <Key>
@@ -559,7 +559,7 @@
           <NavigationProperty Name="AgencyEntity" Relationship="AR2AP.CollectionEntityAgencyEntity" FromRole="CollectionEntity" ToRole="AgencyEntity" />
           <Property Type="Int16" Name="AgencyID" Nullable="false" />
           <Property Type="Decimal" Name="CollectionAmount" Nullable="false" Scale="2" Precision="12" />
-          <Property Type="String" Name="CollectionRemark" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="CollectionRemark" MaxLength="Max" Unicode="true" FixedLength="false" Nullable="true" />
           <NavigationProperty Name="WriteOffEntities" Relationship="AR2AP.WriteOffEntityCollectionEntity" FromRole="CollectionEntity" ToRole="WriteOffEntity" />
         </EntityType>
         <Association Name="CollectionClientEntity">

@@ -36,24 +36,5 @@ namespace AR2AP.WebApp.Controllers
             }
             return View(vModel);
         }
-
-        [HttpGet]
-        public ActionResult CollectionAdd()
-        {
-            CollectionAddVModel vModel = new CollectionAddVModel();
-            return View(vModel);
-        }
-
-        [HttpPost]
-        public ActionResult CollectionAdd(CollectionAddVModel vModel)
-        {
-            return null;
-        }
-
-        [HttpGet]
-        public ActionResult CollectionList()
-        {
-            return null;
-        }
     }
 }

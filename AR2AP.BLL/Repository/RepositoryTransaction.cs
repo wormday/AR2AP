@@ -50,6 +50,10 @@ namespace AR2AP.BLL.Repository
         {
             return new ARRepository(_context);
         }
+        public CollectionRepository GetCollectionRepository()
+        {
+            return new CollectionRepository(_context);
+        }
         #endregion
     }
 }

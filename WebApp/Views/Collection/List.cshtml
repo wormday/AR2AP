@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Collection List";
+}
+@model AR2AP.WebApp.Models.Collection.ListVModel
+@section submenu
+{
+    @Html.Partial("_SubMenuAR")
+}
+<div class="buttonset" style="margin:5px 0px; font-size:10px; font-weight:normal"><a href="/Collection/Add">Add New Collection</a></div>
+<table>
+    <tr>
+        <th>Campaingn</th>
+        <th>Duration</th>
+        <th>Contract No</th>
+        <th>Due Date</th>
+        <th>Invoice</th>
+    </tr>
+    @foreach (var item in Model.CollectionEntities)
+    {
+    <tr>
+        <td>@item.AgencyID</td>
+        <td>@item.CollectionDate.ToString("yyyy-MM-dd")</td>
+        <td>@item.ClientID</td>
+        <td>@item.CollectionAmount</td>
+        <td>@item.CollectionRemark</td>
+    </tr>
+    }
+</table>

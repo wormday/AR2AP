@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 06/27/2013 16:41:56
--- Generated from EDMX file: D:\Projects\AR2AP\AR2AP.BLL\AR2AP.edmx
+-- Date Created: 06/30/2013 23:25:15
+-- Generated from EDMX file: C:\Projects\AR2AP\AR2AP.BLL\AR2AP.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -150,7 +150,7 @@ CREATE TABLE [dbo].[CollectionEntities] (
     [CollectionDate] datetime  NOT NULL,
     [AgencyID] smallint  NOT NULL,
     [CollectionAmount] decimal(12,2)  NOT NULL,
-    [CollectionRemark] nvarchar(max)  NOT NULL
+    [CollectionRemark] nvarchar(max)  NULL
 );
 GO
 

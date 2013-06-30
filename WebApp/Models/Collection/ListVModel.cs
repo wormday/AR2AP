@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using AR2AP.BLL;
 
-namespace AR2AP.WebApp.Models.AR
+namespace AR2AP.WebApp.Models.Collection
 {
-    public class CollectionListVModel
+    public class ListVModel
     {
         public IList<CollectionEntity> CollectionEntities { get; set; }
     }

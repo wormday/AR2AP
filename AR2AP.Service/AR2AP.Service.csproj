@@ -45,6 +45,7 @@
     <Compile Include="AgencyService.cs" />
     <Compile Include="ARService.cs" />
     <Compile Include="ClientService.cs" />
+    <Compile Include="CollectionService.cs" />
     <Compile Include="EmpService.cs" />
     <Compile Include="ISimpleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
