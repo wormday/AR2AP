@@ -18,9 +18,9 @@
     @foreach (var item in Model.CollectionEntities)
     {
     <tr>
-        <td>@item.AgencyID</td>
+        <td>@item.AgencyEntity.AgencyName</td>
         <td>@item.CollectionDate.ToString("yyyy-MM-dd")</td>
-        <td>@item.ClientID</td>
+        <td>@item.ClientEntity.ClientName</td>
         <td>@item.CollectionAmount</td>
         <td>@item.CollectionRemark</td>
     </tr>

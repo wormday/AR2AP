@@ -24,7 +24,7 @@ namespace AR2AP.BLL.Repository
 
         public IEnumerable<CollectionEntity> FindBySpecification(System.Linq.Expressions.Expression<Func<CollectionEntity, bool>> spec)
         {
-            return _context.CollectionEntities.Where(spec);
+            return _context.CollectionEntities.Include("ClientEntity").Include("AgencyEntity").Where(spec);
         }
     }
 }
