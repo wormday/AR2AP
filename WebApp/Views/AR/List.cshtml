@@ -6,7 +6,7 @@
 {
     @Html.Partial("_SubMenuAR")
 }
-<div class="buttonset" style="margin:5px 0px; font-size:10px; font-weight:normal"><a href="/AR/Add">Add New AR</a></div>
+<div class="buttonset" style="margin: 5px 0px; font-size: 10px; font-weight: normal"><a href="/AR/Add">Add New AR</a></div>
 <table>
     <tr>
         <th>Campaingn</th>
@@ -14,17 +14,73 @@
         <th>Contract No</th>
         <th>Due Date</th>
         <th>Invoice</th>
+        <th></th>
+        <th></th>
+        <th>Option</th>
     </tr>
     @foreach (var item in Model.AREntities)
     {
-    <tr>
-        <td><a href="/AR/Modify/@item.ARID">@item.Campaingn<br />@item.ContractNo</a></td>
-        <td>@item.CompaignStart.ToString("yyyy-MM-dd")<br />@item.CompaignEnd.ToString("yyyy-MM-dd")</td>
-        <td></td>
-        <td>@item.DueDate.ToString("yyyy-MM-dd")</td>
-        <td>@item.InvoiceAmount<br />@item.InvoiceDate<br />@item.InvoiceTypeEnum/@item.InvoiceNo</td>
-        <td>@item.ProjectNo</td>
-        <td>@item.CompaignAmount</td>
-    </tr>
+        <tr>
+            <td><a href="/AR/Modify/@item.ARID">@item.Campaingn<br />@item.ContractNo</a></td>
+            <td>@item.CompaignStart.ToString("yyyy-MM-dd")<br />@item.CompaignEnd.ToString("yyyy-MM-dd")</td>
+            <td></td>
+            <td>@item.DueDate.ToString("yyyy-MM-dd")</td>
+            <td>@item.InvoiceAmount<br />@item.InvoiceDate<br />@item.InvoiceTypeEnum/@item.InvoiceNo</td>
+            <td>@item.ProjectNo</td>
+            <td>@item.CompaignAmount</td>
+            <td><a class="writeOffOpener" href="/AR/WriteOff?arId=@item.ARID">WriteOff</a></td>
+        </tr>
     }
 </table>
+<div id="dialog" title="Write Off">
+    <div id="dialogContent"></div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            $("a.writeOffOpener").click(function () {
+                var div = $("#dialogContent");
+                div.html('<img src="/Images/loading01.gif" />Loading...');
+                        $("#dialog").dialog("open");
+                $.get($(this).attr("href"), '', showDialogContent);
+                return false;
+            });
+            function showDialogContent(data) {
+                var div = $("#dialogContent");
+                div.html(data);
+            }
+            function showDialogResult(data) {
+                var div = $("#dialogContent");
+                if (data == 'OK') {
+                    alert("OK");
+                    $("#dialog").dialog("close");
+                }
+                else {
+                    div.html(data);
+                }
+            }
+            $("#dialog").dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 300
+                },
+                hide: {
+                    effect: "Clip",
+                    duration: 300
+                },
+                modal: true,
+                height: 430,
+                width: 550,
+                buttons: {
+                    "Submit": function () {
+                        $.post('/AR/WriteOff', $("form#dialogForm").serialize(), showDialogResult);
+                        var div = $("#smsDialogContent");
+                        div.html('<img src="/Images/loading01.gif" />正在提交，请稍后...');
+                    },
+                    "Cancel": function () { $(this).dialog("close"); }
+                }
+            });
+        });
+    </script>
+}

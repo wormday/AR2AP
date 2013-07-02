@@ -212,6 +212,7 @@
     <Compile Include="Models\Foundation\SimpleListVModel.cs" />
     <Compile Include="Models\Foundation\SimpleMergeVModel.cs" />
     <Compile Include="Models\Foundation\TeamMergeVModel.cs" />
+    <Compile Include="Models\WriteOff\WriteOffVModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -290,7 +291,9 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -336,6 +339,7 @@
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Collection\Add.cshtml" />
     <Content Include="Views\Collection\List.cshtml" />
+    <Content Include="Views\AR\WriteOff.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

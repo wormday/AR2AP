@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using AR2AP.BLL;
 using AR2AP.WebApp.Models.AR;
 using AR2AP.Service;
+using AR2AP.WebApp.Models.WriteOff;
 
 namespace AR2AP.WebApp.Controllers
 {
@@ -34,6 +35,19 @@ namespace AR2AP.WebApp.Controllers
                 ARService service = new ARService();
                 service.Add(vModel.AREntity);
             }
+            return View(vModel);
+        }
+
+        [HttpGet]
+        public ActionResult WriteOff(int arId)
+        {
+            WriteOffVModel vModel = new WriteOffVModel();
+            vModel.WriteOffEntity.ARID = arId;
+            return View(vModel);
+        }
+        [HttpPost]
+        public ActionResult WriteOff(WriteOffVModel vModel)
+        {
             return View(vModel);
         }
     }
