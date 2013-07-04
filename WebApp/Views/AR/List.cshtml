@@ -32,55 +32,57 @@
         </tr>
     }
 </table>
-<div id="dialog" title="Write Off">
-    <div id="dialogContent"></div>
-</div>
+
 @section Scripts {
     <script type="text/javascript">
         $(function () {
-            $("a.writeOffOpener").click(function () {
-                var div = $("#dialogContent");
-                div.html('<img src="/Images/loading01.gif" />Loading...');
-                        $("#dialog").dialog("open");
-                $.get($(this).attr("href"), '', showDialogContent);
-                return false;
-            });
-            function showDialogContent(data) {
-                var div = $("#dialogContent");
-                div.html(data);
-            }
-            function showDialogResult(data) {
-                var div = $("#dialogContent");
-                if (data == 'OK') {
-                    alert("OK");
-                    $("#dialog").dialog("close");
-                }
-                else {
+            $("a.writeOffOpener").click(ShowDialog);
+            function ShowDialog()
+            {
+                $("div#body").append("<div id='dialog' title='Write Off'><div id='dialogContent'></div></div>");
+                function showDialogContent(data) {
+                    var div = $("#dialogContent");
                     div.html(data);
                 }
-            }
-            $("#dialog").dialog({
-                autoOpen: false,
-                show: {
-                    effect: "blind",
-                    duration: 300
-                },
-                hide: {
-                    effect: "Clip",
-                    duration: 300
-                },
-                modal: true,
-                height: 430,
-                width: 550,
-                buttons: {
-                    "Submit": function () {
-                        $.post('/AR/WriteOff', $("form#dialogForm").serialize(), showDialogResult);
-                        var div = $("#smsDialogContent");
-                        div.html('<img src="/Images/loading01.gif" />正在提交，请稍后...');
-                    },
-                    "Cancel": function () { $(this).dialog("close"); }
+                function showDialogResult(data) {
+                    var div = $("#dialogContent");
+                    if (data == 'OK') {
+                        alert("OK");
+                        $("#dialog").dialog("close");
+                    }
+                    else {
+                        div.html(data);
+                    }
                 }
-            });
+                $("#dialog").dialog({
+                    autoOpen: false,
+                    show: {
+                        effect: "blind",
+                        duration: 300
+                    },
+                    hide: {
+                        effect: "Clip",
+                        duration: 300
+                    },
+                    modal: true,
+                    height: 430,
+                    width: 550,
+                    buttons: {
+                        "Submit": function () {
+                            $.post('/AR/WriteOff', $("form#dialogForm").serialize(), showDialogResult);
+                            var div = $("#smsDialogContent");
+                            div.html('<img src="/Images/loading01.gif" />正在提交，请稍后...');
+                        },
+                        "Cancel": function () { $(this).dialog("close"); }
+                    }
+                });
+                
+                var div = $("#dialogContent");
+                div.html('<img src="/Images/loading01.gif" />Loading...');
+                $("#dialog").dialog("open");
+                $.get($(this).attr("href"), '', showDialogContent);
+                return false;
+            }
         });
     </script>
 }
