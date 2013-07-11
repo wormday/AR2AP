@@ -6,4 +6,11 @@
 @using (Html.BeginForm())
 { 
 <input name="dd" value="3" />
+    <table>
+        <tr><td>3</td><td></td></tr>
+        @foreach(var item in Model.CollectionEntities)
+        {
+        <tr><td>@item.CollectionAmount</td><td>@item.CollectionDate</td></tr>
+        }
+    </table>
 }

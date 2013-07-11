@@ -27,6 +27,13 @@ namespace AR2AP.Service
                 return repository.FindBySpecification(o => true).ToList();
             }
         }
-
+        public AREntity GetByKey(int arId)
+        {
+            using (RepositoryTransaction trans = new RepositoryTransaction())
+            {
+                var repository = trans.GetARRepository();
+                return repository.GetByKey(arId);
+            }
+        }
     }
 }

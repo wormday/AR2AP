@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using LinqKit;
 
 namespace AR2AP.BLL.Repository
 {
@@ -24,7 +25,7 @@ namespace AR2AP.BLL.Repository
 
         public IEnumerable<CollectionEntity> FindBySpecification(System.Linq.Expressions.Expression<Func<CollectionEntity, bool>> spec)
         {
-            return _context.CollectionEntities.Include("ClientEntity").Include("AgencyEntity").Where(spec);
+            return _context.CollectionEntities.Include("ClientEntity").Include("AgencyEntity").AsExpandable().Where(spec);
         }
     }
 }

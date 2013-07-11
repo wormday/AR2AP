@@ -7,6 +7,7 @@ using AR2AP.BLL;
 using AR2AP.WebApp.Models.AR;
 using AR2AP.Service;
 using AR2AP.WebApp.Models.WriteOff;
+using LinqKit;
 
 namespace AR2AP.WebApp.Controllers
 {
@@ -41,8 +42,12 @@ namespace AR2AP.WebApp.Controllers
         [HttpGet]
         public ActionResult WriteOff(int arId)
         {
+            ARService service = new ARService();
+            var ar=service.GetByKey(arId);
+            CollectionService cService=new CollectionService();
             WriteOffVModel vModel = new WriteOffVModel();
             vModel.WriteOffEntity.ARID = arId;
+            vModel.CollectionEntities = cService.GetEntities(ar.ClientID, true);
             return View(vModel);
         }
         [HttpPost]

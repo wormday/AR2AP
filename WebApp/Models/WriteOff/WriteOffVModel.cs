@@ -13,5 +13,7 @@ namespace AR2AP.WebApp.Models.WriteOff
             WriteOffEntity = new WriteOffEntity();
         }
         public WriteOffEntity WriteOffEntity { get; set; }
+
+        public IList<CollectionEntity> CollectionEntities { get; set; }
     }
 }

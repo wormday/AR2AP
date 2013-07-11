@@ -34,7 +34,7 @@ namespace AR2AP.WebApp.Controllers
         {
             ListVModel vModel = new ListVModel();
             CollectionService service = new CollectionService();
-            vModel.CollectionEntities=service.GetEntities();
+            vModel.CollectionEntities=service.GetEntities(null,false);
             return View(vModel);
         }
     }
